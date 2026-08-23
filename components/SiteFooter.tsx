@@ -8,8 +8,10 @@ export function SiteFooter() {
         <div className="max-w-xl space-y-3 leading-relaxed">
           <p>
             Fan-made homework tracker. Not affiliated with Marvel, Disney,
-            Netflix, or 20th Century Studios. Avengers: Doomsday is scheduled
-            for {DOOMSDAY_LABEL}.
+            Netflix, JustWatch, or 20th Century Studios. Avengers: Doomsday is
+            scheduled for {DOOMSDAY_LABEL}. Where-to-watch links search
+            JustWatch Canada and Disney+ and are not a guarantee of
+            availability.
           </p>
           <p>
             {TMDB_CREDIT}{" "}

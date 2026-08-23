@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { WhereToWatch } from "@/components/WhereToWatch";
 import { formatRuntime, FRANCHISE_LABEL } from "@/lib/titles";
 import { tmdbImageUrl } from "@/lib/tmdb";
 import type { Title } from "@/lib/types";
@@ -10,6 +11,7 @@ type TitleCardProps = {
   onToggle: (id: string) => void;
   /** Badge in the circle — countdown number, story number, or a bullet. */
   displayOrder?: number | string;
+  providers?: string[];
 };
 
 export function TitleCard({
@@ -18,6 +20,7 @@ export function TitleCard({
   ready,
   onToggle,
   displayOrder,
+  providers,
 }: TitleCardProps) {
   const runtime = formatRuntime(title);
   const checkboxId = `watched-${title.id}`;
@@ -80,22 +83,25 @@ export function TitleCard({
 
         <p className="text-sm leading-relaxed text-muted">{title.whyItMatters}</p>
 
-        <div className="mt-auto flex items-center gap-2 pt-1">
-          <input
-            id={checkboxId}
-            type="checkbox"
-            checked={ready ? watched : false}
-            disabled={!ready}
-            onChange={() => onToggle(title.id)}
-            className="watch-check"
-            aria-label={`Mark ${title.title} as watched`}
-          />
-          <label
-            htmlFor={checkboxId}
-            className="label-caps cursor-pointer text-muted"
-          >
-            Mark watched
-          </label>
+        <div className="mt-auto flex flex-col gap-3 pt-1">
+          <div className="flex items-center gap-2">
+            <input
+              id={checkboxId}
+              type="checkbox"
+              checked={ready ? watched : false}
+              disabled={!ready}
+              onChange={() => onToggle(title.id)}
+              className="watch-check"
+              aria-label={`Mark ${title.title} as watched`}
+            />
+            <label
+              htmlFor={checkboxId}
+              className="label-caps cursor-pointer text-muted"
+            >
+              Mark watched
+            </label>
+          </div>
+          <WhereToWatch title={title} providers={providers} />
         </div>
       </div>
     </article>

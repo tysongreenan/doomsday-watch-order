@@ -1,3 +1,5 @@
+import { SyncCodePanel } from "@/components/SyncCodePanel";
+
 type ProgressPanelProps = {
   watchedCount: number;
   total: number;
@@ -44,6 +46,7 @@ export function ProgressPanel({
           style={{ width: ready ? `${percent}%` : "0%" }}
         />
       </div>
+      <SyncCodePanel />
     </section>
   );
 }

@@ -16,6 +16,7 @@ import {
   subscribeWatched,
   toggleWatched,
 } from "@/lib/progress";
+import { useWatchProviders } from "@/lib/watch-providers";
 import {
   essentialIds,
   essentialRuntimeHint,
@@ -42,6 +43,7 @@ export function WatchOrderApp() {
     getServerWatchedSnapshot,
   );
   const watched = useMemo(() => new Set(JSON.parse(snapshot) as string[]), [snapshot]);
+  const providersById = useWatchProviders();
 
   const toggle = useCallback((id: string) => {
     toggleWatched(id);
@@ -50,7 +52,7 @@ export function WatchOrderApp() {
   const reset = useCallback(() => {
     if (watched.size === 0) return;
     const confirmed = window.confirm(
-      "Clear watched checkboxes on this device?",
+      "Clear watched checkboxes on this device and your sync list?",
     );
     if (confirmed) resetWatched();
   }, [watched.size]);
@@ -105,8 +107,9 @@ export function WatchOrderApp() {
             ) : (
               <>
                 Marvel / Disney+&apos;s official 15-title prep list, shown here
-                in release order. Check titles off as you go — progress stays
-                on this device only. {essentialRuntimeHint}.
+                in release order. Check titles off as you go — progress syncs
+                with a short code when the backend is configured, and stays on
+                this device either way. {essentialRuntimeHint}.
               </>
             )}
           </p>
@@ -122,6 +125,7 @@ export function WatchOrderApp() {
                   watched={watched.has(title.id)}
                   ready={ready}
                   onToggle={toggle}
+                  providers={providersById[title.id]}
                 />
               </li>
             ))}
@@ -142,6 +146,7 @@ export function WatchOrderApp() {
           onToggle={toggle}
           expandXmen={filter === "xmen"}
           expandFf={filter === "fantastic-four"}
+          providersById={providersById}
         />
       ) : null}
     </div>
