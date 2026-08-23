@@ -27,33 +27,34 @@ const EMPTY: CountdownParts = {
 /** Last snapshot. useSyncExternalStore requires Object.is-stable getSnapshot. */
 let cachedParts: CountdownParts = EMPTY;
 
-function sameParts(left: CountdownParts, right: CountdownParts): boolean {
+function sameUnits(left: CountdownParts, right: CountdownParts): boolean {
   return (
     left.days === right.days &&
     left.hours === right.hours &&
     left.minutes === right.minutes &&
-    left.seconds === right.seconds &&
-    left.totalMs === right.totalMs
+    left.seconds === right.seconds
   );
 }
 
 export function getCountdownParts(now = Date.now()): CountdownParts {
-  const totalMs = DOOMSDAY_INSTANT - now;
-  if (totalMs <= 0) {
+  const remainingMs = DOOMSDAY_INSTANT - now;
+  if (remainingMs <= 0) {
     cachedParts = EMPTY;
     return cachedParts;
   }
 
-  const totalSeconds = Math.floor(totalMs / 1000);
+  const totalSeconds = Math.floor(remainingMs / 1000);
   const next: CountdownParts = {
     days: Math.floor(totalSeconds / 86_400),
     hours: Math.floor((totalSeconds % 86_400) / 3_600),
     minutes: Math.floor((totalSeconds % 3_600) / 60),
     seconds: totalSeconds % 60,
-    totalMs,
+    totalMs: totalSeconds * 1000,
   };
 
-  if (sameParts(cachedParts, next)) return cachedParts;
+  if (cachedParts !== EMPTY && sameUnits(cachedParts, next)) {
+    return cachedParts;
+  }
   cachedParts = next;
   return cachedParts;
 }
