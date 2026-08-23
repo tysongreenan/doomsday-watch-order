@@ -115,110 +115,44 @@ body {
   box-shadow: 0 0 28px rgba(229, 9, 20, 0.75);
 }
 
-.hero-collage {
+.hero-media {
   position: absolute;
   inset: 0;
   z-index: 0;
-}
-
-.hero-piece {
-  position: absolute;
-  overflow: hidden;
   background: var(--background);
 }
 
-.hero-piece-img {
-  object-fit: cover;
-  object-position: center top;
-}
-
-.hero-piece-base {
+.hero-media picture,
+.hero-media img {
+  position: absolute;
   inset: 0;
-  z-index: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.hero-piece-xmen {
-  top: -4%;
-  left: -6%;
-  z-index: 2;
-  width: 52%;
-  height: 72%;
-  transform: rotate(-3.5deg);
-  clip-path: polygon(0 0, 88% 0, 100% 100%, 0 86%);
-  box-shadow:
-    0 0 0 2px rgba(229, 9, 20, 0.55),
-    0 20px 50px rgba(0, 0, 0, 0.55);
+.hero-photo {
+  object-fit: cover;
+  object-position: center 28%;
 }
 
-.hero-piece-avengers {
-  top: -8%;
-  left: 28%;
-  z-index: 1;
-  width: 58%;
-  height: 64%;
-  transform: rotate(1.5deg);
-}
-
-.hero-piece-ff {
-  top: 6%;
-  right: -4%;
-  z-index: 2;
-  width: 34%;
-  height: 68%;
-  transform: rotate(3deg);
-  box-shadow:
-    0 0 0 2px rgba(229, 9, 20, 0.45),
-    0 16px 40px rgba(0, 0, 0, 0.5);
-}
-
-.hero-piece-deadpool,
-.hero-piece-cap,
-.hero-piece-logan {
-  z-index: 5;
-  aspect-ratio: 2 / 3;
-  box-shadow:
-    0 0 0 3px var(--primary),
-    0 18px 40px rgba(0, 0, 0, 0.7);
-}
-
-.hero-piece-deadpool {
-  right: 18%;
-  bottom: 10%;
-  width: 168px;
-  transform: rotate(-7deg);
-}
-
-.hero-piece-cap {
-  right: 5%;
-  bottom: 6%;
-  z-index: 6;
-  width: 140px;
-  transform: rotate(6deg);
-}
-
-.hero-piece-logan {
-  left: 6%;
-  bottom: 8%;
-  z-index: 4;
-  width: 128px;
-  transform: rotate(-5deg);
-}
-
-.hero-vignette {
+.hero-overlay {
   position: absolute;
   inset: 0;
   z-index: 7;
   background:
     linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.28) 0%,
-      rgba(0, 0, 0, 0.12) 30%,
-      rgba(0, 0, 0, 0.72) 68%,
+      rgba(35, 35, 35, 0.55) 0%,
+      rgba(35, 35, 35, 0.28) 28%,
+      rgba(35, 35, 35, 0.72) 62%,
       var(--background) 100%
     ),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.58) 0%, transparent 42%, rgba(0, 0, 0, 0.38) 100%),
-    radial-gradient(900px 420px at 12% -8%, rgba(229, 9, 20, 0.28), transparent 58%),
-    radial-gradient(520px 280px at 100% 0%, rgba(229, 9, 20, 0.16), transparent 55%);
+    linear-gradient(
+      90deg,
+      rgba(35, 35, 35, 0.72) 0%,
+      rgba(35, 35, 35, 0.22) 46%,
+      rgba(35, 35, 35, 0.55) 100%
+    );
 }
 
 .hero-grain {
@@ -237,27 +171,230 @@ body {
   display: flex;
   min-height: min(92svh, 820px);
   width: 100%;
-  max-width: 64rem;
+  max-width: 72rem;
   flex-direction: column;
   justify-content: flex-end;
   margin-inline: auto;
-  padding: 11rem var(--space-4) var(--space-8);
+  padding: 8rem var(--space-4) var(--space-8);
 }
 
 .hero-lede {
-  max-width: 40rem;
-  margin-top: var(--space-6);
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text-muted);
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
+  max-width: 36rem;
+  margin-top: var(--space-4);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--text);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.75);
 }
 
-.hero .btn-primary {
-  align-self: flex-start;
-  margin-top: var(--space-8);
-  border-radius: 999px;
-  box-shadow: 0 0 24px rgba(229, 9, 20, 0.45);
+.countdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.countdown-clock {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 5.5rem));
+  gap: var(--space-2);
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 5.25rem;
+  padding: var(--space-3) var(--space-2);
+  background: rgba(35, 35, 35, 0.72);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.countdown-value {
+  font-size: clamp(1.6rem, 5vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--text);
+}
+
+.countdown-label {
+  margin-top: var(--space-2);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.order-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.order-card {
+  display: flex;
+  min-height: 7.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  text-align: left;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  color: var(--text);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.order-card:hover {
+  border-color: var(--primary);
+}
+
+.order-card[aria-checked="true"] {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.order-card[aria-checked="true"] .order-card-hint {
+  color: var(--on-primary);
+}
+
+.order-card-title {
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.order-card-hint {
+  font-size: var(--text-body);
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+.order-card:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.share-panel {
+  margin-top: var(--space-6);
+  padding: var(--space-6);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.share-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.share-action {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.share-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.progress-strip {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.progress-strip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.reset-link {
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.reset-link:hover:not(:disabled) {
+  color: var(--text);
+}
+
+.reset-link:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+  text-decoration: none;
+}
+
+.reset-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.timeline-group {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+}
+
+.timeline-year {
+  position: sticky;
+  top: var(--space-4);
+  padding-top: var(--space-2);
+}
+
+.timeline-year-label {
+  display: block;
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  word-break: break-word;
+}
+
+.timeline-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .eyebrow,
@@ -627,11 +764,34 @@ body {
 @media (min-width: 640px) {
   .hero-copy {
     min-height: min(92svh, 820px);
-    padding: 14rem var(--space-6) var(--space-16);
+    padding: 10rem var(--space-6) var(--space-16);
   }
 
   .hero-lede {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
+  }
+
+  .countdown-clock {
+    grid-template-columns: repeat(4, minmax(0, 6.5rem));
+    gap: var(--space-3);
+  }
+
+  .order-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .share-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .timeline-group {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+
+  .timeline-year-label {
+    font-size: 13px;
   }
 
   .title-card {
@@ -652,41 +812,11 @@ body {
 
   .hero-copy {
     min-height: min(94svh, 760px);
-    padding-top: 13rem;
+    padding-top: 8rem;
   }
 
-  .hero-piece-ff,
-  .hero-piece-logan {
-    display: none;
-  }
-
-  .hero-piece-xmen {
-    top: 0;
-    left: -10%;
-    width: 78%;
-    height: 46%;
-  }
-
-  .hero-piece-avengers {
-    top: 10%;
-    left: auto;
-    right: -12%;
-    width: 72%;
-    height: 40%;
-  }
-
-  .hero-piece-deadpool {
-    top: 32%;
-    right: 14%;
-    bottom: auto;
-    width: 92px;
-  }
-
-  .hero-piece-cap {
-    top: 36%;
-    right: 2%;
-    bottom: auto;
-    width: 80px;
+  .hero-photo {
+    object-position: center 18%;
   }
 }
 

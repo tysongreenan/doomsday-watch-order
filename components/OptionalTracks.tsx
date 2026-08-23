@@ -73,7 +73,7 @@ export function OptionalTracks({
             </span>
             <p className="mt-2 text-sm font-normal tracking-normal text-muted normal-case">
               Pre-MCU Fox and 2015 films. Flavor only — skip them if you are
-              only doing official homework.
+              only watching the main list.
             </p>
           </summary>
           <div className="space-y-3 px-3 pb-4 sm:px-4">

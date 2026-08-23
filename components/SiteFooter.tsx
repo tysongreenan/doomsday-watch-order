@@ -7,7 +7,7 @@ export function SiteFooter() {
       <div className="mx-auto flex max-w-5xl flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:px-6">
         <div className="max-w-xl space-y-3 leading-relaxed">
           <p>
-            Fan-made homework tracker. Not affiliated with Marvel, Disney,
+            Fan-made watch order. Not affiliated with Marvel, Disney,
             Netflix, JustWatch, or 20th Century Studios. Avengers: Doomsday is
             scheduled for {DOOMSDAY_LABEL}. Where-to-watch links search
             JustWatch Canada and Disney+ and are not a guarantee of

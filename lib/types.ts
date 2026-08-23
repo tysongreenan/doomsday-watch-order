@@ -37,6 +37,13 @@ export type Title = {
   storyOrder: number;
   title: string;
   year: number;
+  /**
+   * In-universe year for the left-hand timeline rail (not always the release year).
+   * Prefer a number (1943, 1962). Use `timelineYearLabel` when a year is the wrong fit.
+   */
+  timelineYear?: number;
+  /** Non-numeric in-universe era, e.g. "Outside time" or "1960s". */
+  timelineYearLabel?: string;
   type: TitleType;
   franchises: Franchise[];
   track: TitleTrack;

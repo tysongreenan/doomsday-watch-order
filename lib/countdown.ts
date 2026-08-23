@@ -1,0 +1,50 @@
+import { DOOMSDAY_DATE } from "./titles";
+
+/**
+ * Shared public countdown: midnight at the start of Doomsday
+ * in America/Toronto. December is Eastern Standard Time (UTC−5),
+ * so this is `2026-12-18T00:00:00-05:00`.
+ */
+export const DOOMSDAY_TIME_ZONE = "America/Toronto";
+export const DOOMSDAY_INSTANT = Date.parse(`${DOOMSDAY_DATE}T00:00:00-05:00`);
+
+export type CountdownParts = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  totalMs: number;
+};
+
+const EMPTY: CountdownParts = {
+  days: 0,
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
+  totalMs: 0,
+};
+
+export function getCountdownParts(now = Date.now()): CountdownParts {
+  const totalMs = DOOMSDAY_INSTANT - now;
+  if (totalMs <= 0) return { ...EMPTY, totalMs: 0 };
+
+  const totalSeconds = Math.floor(totalMs / 1000);
+  const days = Math.floor(totalSeconds / 86_400);
+  const hours = Math.floor((totalSeconds % 86_400) / 3_600);
+  const minutes = Math.floor((totalSeconds % 3_600) / 60);
+  const seconds = totalSeconds % 60;
+  return { days, hours, minutes, seconds, totalMs };
+}
+
+export function countdownHeadline(parts: CountdownParts): string {
+  if (parts.totalMs <= 0) return "Doomsday is here";
+  if (parts.days > 1) return `Just ${parts.days} days till Doomsday`;
+  if (parts.days === 1) return "Just 1 day till Doomsday";
+  if (parts.hours > 1) return `Just ${parts.hours} hours till Doomsday`;
+  if (parts.hours === 1) return "Just 1 hour till Doomsday";
+  if (parts.minutes > 1) return `Just ${parts.minutes} minutes till Doomsday`;
+  if (parts.minutes === 1) return "Just 1 minute till Doomsday";
+  return "Doomsday is here";
+}
+
+export const SERVER_COUNTDOWN_HEADLINE = "Countdown to Doomsday";

@@ -108,7 +108,7 @@ export async function adoptSyncCode(
   const remote = await fetchProgress(code);
   if (remote.kind === "disabled") {
     setSyncMode("off");
-    return { ok: false, error: "Sync is not configured on this deploy." };
+    return { ok: false, error: "Sharing is not available right now." };
   }
   if (remote.kind === "missing") {
     return { ok: false, error: "No list found for that code." };
@@ -173,7 +173,7 @@ async function fetchProgress(code: string): Promise<
       watched: Array.isArray(json.watched) ? json.watched : [],
     };
   } catch {
-    return { kind: "error", error: "Could not reach sync." };
+    return { kind: "error", error: "Could not reach the list." };
   }
 }
 
@@ -203,6 +203,6 @@ async function upsertProgress(
       watched: Array.isArray(json.watched) ? json.watched : watched,
     };
   } catch {
-    return { kind: "error", error: "Could not reach sync." };
+    return { kind: "error", error: "Could not reach the list." };
   }
 }
