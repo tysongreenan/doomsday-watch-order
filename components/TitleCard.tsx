@@ -27,7 +27,13 @@ export function TitleCard({
   const orderBadge = displayOrder ?? title.order ?? "•";
   const optionalLabel =
     title.optionalNote ??
-    (title.track !== "essential" ? "Optional" : undefined);
+    (title.track === "upcoming"
+      ? "Coming soon"
+      : title.track === "recommended"
+        ? "Recommended"
+        : title.track !== "essential"
+          ? "Optional"
+          : undefined);
 
   return (
     <article className={`title-card ${watched ? "is-watched" : ""}`}>

@@ -9,7 +9,7 @@ export default function Home() {
     "@type": "ItemList",
     name: "Countdown to Avengers: Doomsday",
     description:
-      "Disney+ / Marvel official 15-title prep list in release order.",
+      "Doomsday prep list: official Disney+ 15 plus Spider-Man: Brand New Day, in timeline order by default.",
     numberOfItems: essentialTitles.length,
     itemListElement: essentialTitles.map((title) => ({
       "@type": "ListItem",

@@ -2,7 +2,9 @@
 
 Public homework site for **Avengers: Doomsday** (December 18, 2026).
 
-The primary list is the Disney+ / Marvel official **Countdown to Avengers: Doomsday** — 15 titles in **Release order**. Switch to **Story order** for the same titles (plus deeper X-Men cuts) in in-universe chronology. Optional older Fantastic Four films stay on a collapsed track.
+The default view is **Timeline order** (in-universe chronology). **Release order** stays available as a toggle.
+
+The homework core is the Disney+ / Marvel official **Countdown to Avengers: Doomsday** (15 titles) plus **Spider-Man: Brand New Day** as essential #16. The default All list also includes recommended deeper cuts (First Class, Days of Future Past, Deadpool, Deadpool 2, optional The Marvels, optional Logan) and the upcoming **Avengers: Doomsday** / **Avengers: Secret Wars**. Older non-MCU Fantastic Four films stay on a collapsed track.
 
 Progress (watched / unwatched) is stored in the visitor’s browser with `localStorage`. When `DATABASE_URL` is set (Neon Postgres), a short **sync code** (`DOOM-XXXX`) also stores that list so it can be loaded on another device. There is no Google/email login.
 
@@ -82,7 +84,7 @@ API:
 3. Env vars are optional. Add `DATABASE_URL` (Neon) to enable sync; add a TMDB key only if you want Canada provider names on cards.
 4. Deploy. Checkboxes persist per visitor in the browser even when sync is off.
 
-## Official 15 (release order)
+## Essential 16 (Disney+ 15 + Brand New Day)
 
 1. X-Men (2000)
 2. X2 (2003)
@@ -99,7 +101,23 @@ API:
 13. Captain America: Brave New World (2025)
 14. Thunderbolts* (2025)
 15. The Fantastic Four: First Steps (2025)
+16. Spider-Man: Brand New Day (2026) — Phase 6 bridge; not on the official Disney+ 15
 
-## Story order (in-universe, practical)
+## Recommended extras (default All list)
 
-Not a single official MCU timeline. First Class before the original X-Men films; Cap: First Avenger before The Avengers; Loki after Endgame; First Steps last as the current MCU Fantastic Four. Older non-MCU Fantastic Four stay optional.
+Cast-driven for the announced Doomsday Fox/MCU mix — not a Phase 4 dump. No Age of Ultron, Guardians, or X-Men: The Last Stand.
+
+- X-Men: First Class (2011) — Magneto/Xavier origin
+- X-Men: Days of Future Past (2014) — critical extra for the original Fox roster
+- Deadpool (2016) and Deadpool 2 (2018) — Wade/Cable before D&W (Gambit is already covered there)
+- Logan (2017) — optional deeper
+- The Marvels (2023) — optional MCU extra (Beast post-credits / multiverse)
+
+## Upcoming
+
+- Avengers: Doomsday (December 18, 2026)
+- Avengers: Secret Wars (December 17, 2027)
+
+## Timeline order (default, in-universe, practical)
+
+Not a single official MCU timeline. Cap: First Avenger, then First Class before the original X-Men films; Days of Future Past as the mutant bridge; Deadpool films, then Logan. MCU: The Avengers → Infinity War → Endgame → Loki, then Shang-Chi through The Marvels, Deadpool & Wolverine, Brave New World, Thunderbolts*, First Steps, and Brand New Day. Doomsday and Secret Wars close the list. Older non-MCU Fantastic Four stay optional.

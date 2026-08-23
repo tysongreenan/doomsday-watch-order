@@ -15,7 +15,12 @@ export function disneyPlusSearchUrl(title: Title): string {
   return `${DISNEY_PLUS_SEARCH}?q=${encodeURIComponent(title.title)}`;
 }
 
-/** Official Disney+ countdown titles are the ones usually on Disney+. */
+/** Official Disney+ countdown titles (1–15). Brand New Day is theatrical. */
 export function isUsuallyOnDisneyPlus(title: Title): boolean {
-  return title.track === "essential";
+  return (
+    title.track === "essential" &&
+    title.order != null &&
+    title.order >= 1 &&
+    title.order <= 15
+  );
 }

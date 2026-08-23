@@ -13,17 +13,21 @@ type WhereToWatchProps = {
 export function WhereToWatch({ title, providers = [] }: WhereToWatchProps) {
   const justWatch = justWatchSearchUrl(title);
   const showDisney = isUsuallyOnDisneyPlus(title);
+  const upcoming = title.track === "upcoming";
 
   return (
     <div className="where-to-watch">
       <div className="where-to-watch-row">
+        {upcoming ? (
+          <span className="watch-providers">Coming soon</span>
+        ) : null}
         <a
           className="watch-link"
           href={justWatch}
           target="_blank"
           rel="noreferrer"
         >
-          Where to watch
+          {upcoming ? "JustWatch" : "Where to watch"}
         </a>
         {showDisney ? (
           <a

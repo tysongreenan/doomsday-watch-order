@@ -1,6 +1,6 @@
 import { DaysUntil } from "@/components/DaysUntil";
 import { HeroCollage } from "@/components/HeroCollage";
-import { DOOMSDAY_LABEL, ESSENTIAL_COUNT } from "@/lib/titles";
+import { DISNEY_PLUS_COUNT, DOOMSDAY_LABEL, ESSENTIAL_COUNT } from "@/lib/titles";
 
 export function Hero() {
   return (
@@ -16,9 +16,11 @@ export function Hero() {
           <span className="block text-primary">Doomsday</span>
         </h1>
         <p className="hero-lede">
-          A streaming-style watch order anyone can use before December. Start
-          with the official Disney+ countdown — {ESSENTIAL_COUNT} titles — then
-          optionally dive deeper into X-Men and older Fantastic Four films.
+          A streaming-style watch order anyone can use before December.
+          Timeline order is the default; switch to Release order anytime. The
+          official Disney+ countdown is {DISNEY_PLUS_COUNT} titles — we treat
+          Spider-Man: Brand New Day as essential #{ESSENTIAL_COUNT}, then add
+          recommended deeper cuts and the upcoming Avengers films.
         </p>
         <DaysUntil />
       </div>
