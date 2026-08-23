@@ -8,6 +8,17 @@ export type FilterId = "all" | "essential" | "xmen" | "mcu" | "fantastic-four";
 
 export type SortMode = "release" | "story";
 
+export type TmdbMediaType = "movie" | "tv";
+
+export type TitleTmdb = {
+  id: number;
+  mediaType: TmdbMediaType;
+  /** TMDB `poster_path`, including the leading slash. */
+  posterPath: string;
+  /** TMDB `backdrop_path`, including the leading slash. */
+  backdropPath: string;
+};
+
 export type Title = {
   id: string;
   order?: number;
@@ -22,4 +33,5 @@ export type Title = {
   runtimeLabel?: string;
   whyItMatters: string;
   optionalNote?: string;
+  tmdb: TitleTmdb;
 };

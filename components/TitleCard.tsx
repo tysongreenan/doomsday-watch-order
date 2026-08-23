@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { formatRuntime, FRANCHISE_LABEL } from "@/lib/titles";
+import { tmdbImageUrl } from "@/lib/tmdb";
 import type { Title } from "@/lib/types";
 
 type TitleCardProps = {
@@ -27,7 +29,15 @@ export function TitleCard({
   return (
     <article className={`title-card ${watched ? "is-watched" : ""}`}>
       <div className="title-card-rail" aria-hidden />
-      <div className="title-poster" aria-hidden>
+      <div className="title-poster">
+        <Image
+          src={tmdbImageUrl(title.tmdb.posterPath, "w780")}
+          alt={`${title.title} (${title.year}) poster`}
+          fill
+          sizes="(max-width: 640px) 108px, 156px"
+          className="title-poster-img"
+        />
+        <span className="title-poster-shade" aria-hidden />
         <span className="title-poster-bar" />
         <span className="title-poster-number">{orderBadge}</span>
         {watched ? <span className="title-poster-stamp">Watched</span> : null}

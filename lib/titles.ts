@@ -1,3 +1,4 @@
+import { heroCollagePieces } from "./hero-collage";
 import type { FilterId, Franchise, SortMode, Title } from "./types";
 
 export const DOOMSDAY_DATE = "2026-12-18";
@@ -54,6 +55,12 @@ export const essentialTitles: Title[] = [
     runtimeMinutes: 104,
     whyItMatters:
       "Introduces the Fox X-Men roster and the Xavier–Magneto war that Doomsday is expected to collide with.",
+    tmdb: {
+      id: 36657,
+      mediaType: "movie",
+      posterPath: "/bRDAc4GogyS9ci3ow7UnInOcriN.jpg",
+      backdropPath: "/3QUVzbcNyfGe3ocWkYAT8emK8Co.jpg",
+    },
   },
   {
     id: "x2-2003",
@@ -67,6 +74,12 @@ export const essentialTitles: Title[] = [
     runtimeMinutes: 134,
     whyItMatters:
       "Deepens the Brotherhood conflict and cements Wolverine as the mutant most likely to bridge worlds.",
+    tmdb: {
+      id: 36658,
+      mediaType: "movie",
+      posterPath: "/bst4alFUXCxISwdRUKSMhhkrX1M.jpg",
+      backdropPath: "/7TYITrR804tLITNur3b8VLCK6tw.jpg",
+    },
   },
   {
     id: "captain-america-the-first-avenger-2011",
@@ -80,6 +93,12 @@ export const essentialTitles: Title[] = [
     runtimeMinutes: 124,
     whyItMatters:
       "Steve Rogers’ origin, Hydra, and the Tesseract seed the Avengers myth the later crossovers still run on.",
+    tmdb: {
+      id: 1771,
+      mediaType: "movie",
+      posterPath: "/vSNxAJTlD0r02V9sPYpOjqDZXUK.jpg",
+      backdropPath: "/yFuKvT4Vm3sKHdFY4eG6I4ldAnn.jpg",
+    },
   },
   {
     id: "the-avengers-2012",
@@ -93,6 +112,12 @@ export const essentialTitles: Title[] = [
     runtimeMinutes: 143,
     whyItMatters:
       "The original team-up — the template every later Avengers event, including Doomsday, is measured against.",
+    tmdb: {
+      id: 24428,
+      mediaType: "movie",
+      posterPath: "/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
+      backdropPath: "/9BBTo63ANSmhC4e6r62OJFuK2GL.jpg",
+    },
   },
   {
     id: "avengers-infinity-war-2018",
@@ -106,6 +131,12 @@ export const essentialTitles: Title[] = [
     runtimeMinutes: 149,
     whyItMatters:
       "Thanos and the Infinity Stones rewrite the universe the Multiverse Saga is still answering.",
+    tmdb: {
+      id: 299536,
+      mediaType: "movie",
+      posterPath: "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
+      backdropPath: "/mDfJG3LC3Dqb67AZ52x3Z0jU0uB.jpg",
+    },
   },
   {
     id: "avengers-endgame-2019",
@@ -119,6 +150,12 @@ export const essentialTitles: Title[] = [
     runtimeMinutes: 181,
     whyItMatters:
       "The Time Heist, the sacrifices, and the new status quo that Phase 4–6 — and Doomsday — inherit.",
+    tmdb: {
+      id: 299534,
+      mediaType: "movie",
+      posterPath: "/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg",
+      backdropPath: "/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
+    },
   },
   {
     id: "loki-2021",
@@ -132,6 +169,12 @@ export const essentialTitles: Title[] = [
     runtimeLabel: "2 seasons · ~10 hr",
     whyItMatters:
       "The TVA, branching timelines, and the multiverse machinery that lets mutants and the Fantastic Four share a screen.",
+    tmdb: {
+      id: 84958,
+      mediaType: "tv",
+      posterPath: "/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg",
+      backdropPath: "/q3jHCb4dMfYF6ojikKuHd6LscxC.jpg",
+    },
   },
   {
     id: "shang-chi-2021",
@@ -145,6 +188,12 @@ export const essentialTitles: Title[] = [
     runtimeMinutes: 132,
     whyItMatters:
       "A post-Endgame hero and the Ten Rings sit in the same MCU generation Doomsday is drawing into the fight.",
+    tmdb: {
+      id: 566525,
+      mediaType: "movie",
+      posterPath: "/9f2Q0U3IOsLgrI2HkvldwSABZy5.jpg",
+      backdropPath: "/r7K6Xt0RX4Mw0cAbZVw5cyb1Tux.jpg",
+    },
   },
   {
     id: "spider-man-no-way-home-2021",
@@ -158,6 +207,12 @@ export const essentialTitles: Title[] = [
     runtimeMinutes: 148,
     whyItMatters:
       "The spell that cracked the multiverse and pulled variants through — the door Doomsday walks through.",
+    tmdb: {
+      id: 634649,
+      mediaType: "movie",
+      posterPath: "/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+      backdropPath: "/uyrOU4BDm2kbVxFsMiDFIHDhc4d.jpg",
+    },
   },
   {
     id: "black-panther-wakanda-forever-2022",
@@ -171,6 +226,12 @@ export const essentialTitles: Title[] = [
     runtimeMinutes: 161,
     whyItMatters:
       "A new Black Panther, Namor, and a more fractured political map heading into the next Avengers war.",
+    tmdb: {
+      id: 505642,
+      mediaType: "movie",
+      posterPath: "/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
+      backdropPath: "/83H0C66AcvkwpG2738VCTHMY9uv.jpg",
+    },
   },
   {
     id: "doctor-strange-multiverse-of-madness-2022",
@@ -184,6 +245,12 @@ export const essentialTitles: Title[] = [
     runtimeMinutes: 126,
     whyItMatters:
       "Incursions, variant Stranges, and worlds that can collide and die — a preview of multiversal stakes.",
+    tmdb: {
+      id: 453395,
+      mediaType: "movie",
+      posterPath: "/ddJcSKbcp4rKZTmuyWaMhuwcfMz.jpg",
+      backdropPath: "/lv3TXqhpaIxkclIHbhN2MRMOemQ.jpg",
+    },
   },
   {
     id: "deadpool-and-wolverine-2024",
@@ -197,6 +264,12 @@ export const essentialTitles: Title[] = [
     runtimeMinutes: 128,
     whyItMatters:
       "Fox characters officially punch into the MCU via the TVA — the on-ramp for X-Men in Doomsday.",
+    tmdb: {
+      id: 533535,
+      mediaType: "movie",
+      posterPath: "/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
+      backdropPath: "/by8z9Fe8y7p4jo2YlW2SZDnptyT.jpg",
+    },
   },
   {
     id: "captain-america-brave-new-world-2025",
@@ -210,6 +283,12 @@ export const essentialTitles: Title[] = [
     runtimeMinutes: 118,
     whyItMatters:
       "Sam Wilson’s Cap, President Ross, and adamantium reset the board in the year before Doomsday.",
+    tmdb: {
+      id: 822119,
+      mediaType: "movie",
+      posterPath: "/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg",
+      backdropPath: "/ce3prrjh9ZehEl5JinNqr4jIeaB.jpg",
+    },
   },
   {
     id: "thunderbolts-2025",
@@ -223,6 +302,12 @@ export const essentialTitles: Title[] = [
     runtimeMinutes: 126,
     whyItMatters:
       "The New Avengers and the Void show who is actually standing when the next world-ending threat arrives.",
+    tmdb: {
+      id: 986056,
+      mediaType: "movie",
+      posterPath: "/hqcexYHbiTBfDIdDWxrxPtVndBX.jpg",
+      backdropPath: "/rthMuZfFv4fqEU4JVbgSW9wQ8rs.jpg",
+    },
   },
   {
     id: "fantastic-four-first-steps-2025",
@@ -236,6 +321,12 @@ export const essentialTitles: Title[] = [
     runtimeMinutes: 115,
     whyItMatters:
       "Reed’s family, a 1960s-adjacent Earth, and Doom’s shadow — the most direct on-ramp to December.",
+    tmdb: {
+      id: 617126,
+      mediaType: "movie",
+      posterPath: "/nf5qaSEvyYSNeFH0YhSs5EsBLX9.jpg",
+      backdropPath: "/s94NjfKkcSczZ1FembwmQZwsuwY.jpg",
+    },
   },
 ];
 
@@ -251,6 +342,12 @@ export const xmenDeeperTitles: Title[] = [
     runtimeMinutes: 132,
     whyItMatters:
       "Young Xavier and Magneto in the Cold War — the origin story most people mean by a deeper X-Men cut.",
+    tmdb: {
+      id: 49538,
+      mediaType: "movie",
+      posterPath: "/hNEokmUke0dazoBhttFN0o3L7Xv.jpg",
+      backdropPath: "/yhp5Pt4GugkCs5mz63qWz5khHXe.jpg",
+    },
   },
   {
     id: "x-men-days-of-future-past-2014",
@@ -263,6 +360,12 @@ export const xmenDeeperTitles: Title[] = [
     runtimeMinutes: 131,
     whyItMatters:
       "The timeline-rewrite that ties the original trilogy to First Class — useful mutant-history homework, not on the official 15.",
+    tmdb: {
+      id: 127585,
+      mediaType: "movie",
+      posterPath: "/tYfijzolzgoMOtegh1Y7j2Enorg.jpg",
+      backdropPath: "/3czpqXzFy5UcNuD1AubecRLWkwD.jpg",
+    },
   },
   {
     id: "logan-2017",
@@ -275,6 +378,12 @@ export const xmenDeeperTitles: Title[] = [
     runtimeMinutes: 137,
     whyItMatters:
       "A grim, standalone sendoff that shows how far these characters can go; tone sample, not required plot.",
+    tmdb: {
+      id: 263115,
+      mediaType: "movie",
+      posterPath: "/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg",
+      backdropPath: "/qTdCfGyDisY9e8BLycszlyTsPWx.jpg",
+    },
   },
   {
     id: "deadpool-2016",
@@ -287,6 +396,12 @@ export const xmenDeeperTitles: Title[] = [
     runtimeMinutes: 108,
     whyItMatters:
       "Wade’s origin and fourth-wall chaos before he becomes an MCU problem in Deadpool & Wolverine.",
+    tmdb: {
+      id: 293660,
+      mediaType: "movie",
+      posterPath: "/3E53WEZJqP6aM84D8CckXx4pIHw.jpg",
+      backdropPath: "/en971MEXui9diirXlogOrPKmsEn.jpg",
+    },
   },
   {
     id: "deadpool-2-2018",
@@ -299,6 +414,12 @@ export const xmenDeeperTitles: Title[] = [
     runtimeMinutes: 119,
     whyItMatters:
       "Cable, family, and the found-family setup that Deadpool & Wolverine pays off.",
+    tmdb: {
+      id: 383498,
+      mediaType: "movie",
+      posterPath: "/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg",
+      backdropPath: "/3P52oz9HPQWxcwHOwxtyrVV1LKi.jpg",
+    },
   },
 ];
 
@@ -315,6 +436,12 @@ export const fantasticFourLegacyTitles: Title[] = [
     optionalNote: "Optional / non-MCU",
     whyItMatters:
       "A campy, non-MCU intro to Reed, Sue, Johnny, and Ben — flavor only, not the 2025 First Steps team.",
+    tmdb: {
+      id: 9738,
+      mediaType: "movie",
+      posterPath: "/4YMcYEFS8sFuW3soP1HVmgR3cSm.jpg",
+      backdropPath: "/2cDXXLirYsoP6rk9B8yrvNHbbFy.jpg",
+    },
   },
   {
     id: "fantastic-four-rise-of-the-silver-surfer-2007",
@@ -328,6 +455,12 @@ export const fantasticFourLegacyTitles: Title[] = [
     optionalNote: "Optional / non-MCU",
     whyItMatters:
       "Silver Surfer (and a very loose Galactus) as optional texture — not MCU canon and not required.",
+    tmdb: {
+      id: 1979,
+      mediaType: "movie",
+      posterPath: "/9wRfzTcMyyzkQxVDqBHv8RwuZOv.jpg",
+      backdropPath: "/o2wYH40zW0JIYiYUTu6L4gsNy7E.jpg",
+    },
   },
   {
     id: "fantastic-four-2015",
@@ -341,6 +474,12 @@ export const fantasticFourLegacyTitles: Title[] = [
     optionalNote: "Optional / non-MCU",
     whyItMatters:
       "A grim reboot that is not MCU and not needed; skip unless you are curious about every screen version.",
+    tmdb: {
+      id: 166424,
+      mediaType: "movie",
+      posterPath: "/cDroz5qSlP8xZ6tOpeYoPkBvKyL.jpg",
+      backdropPath: "/or5kDR8Ve3TtuPSdEf1X5NdQHyz.jpg",
+    },
   },
 ];
 
@@ -355,6 +494,13 @@ export const essentialIds = essentialTitles.map((title) => title.id);
 const storyOrders = allTitles.map((title) => title.storyOrder);
 if (new Set(storyOrders).size !== storyOrders.length) {
   throw new Error("Each title must have a unique storyOrder");
+}
+
+const titlesById = new Map(allTitles.map((title) => [title.id, title]));
+for (const piece of heroCollagePieces) {
+  if (!titlesById.has(piece.titleId)) {
+    throw new Error(`Hero collage references unknown title ${piece.titleId}`);
+  }
 }
 
 export function formatRuntime(title: Title): string | null {
