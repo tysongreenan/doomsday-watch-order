@@ -13,6 +13,7 @@ export function Hero() {
             alt=""
             className="hero-photo"
             fetchPriority="high"
+            decoding="async"
           />
         </picture>
         <div className="hero-overlay" />

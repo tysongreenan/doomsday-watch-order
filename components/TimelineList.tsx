@@ -34,18 +34,22 @@ export function TimelineList({
             <span className="timeline-year-label">{group.label}</span>
           </div>
           <ol className="timeline-cards">
-            {group.titles.map((title) => (
-              <li key={title.id}>
-                <TitleCard
-                  title={title}
-                  displayOrder={isStory ? title.storyOrder : title.order}
-                  watched={watched.has(title.id)}
-                  ready={ready}
-                  onToggle={onToggle}
-                  providers={providersById[title.id]}
-                />
-              </li>
-            ))}
+            {group.titles.map((title) => {
+              const posterIndex = titles.indexOf(title);
+              return (
+                <li key={title.id}>
+                  <TitleCard
+                    title={title}
+                    displayOrder={isStory ? title.storyOrder : title.order}
+                    watched={watched.has(title.id)}
+                    ready={ready}
+                    onToggle={onToggle}
+                    providers={providersById[title.id]}
+                    eager={posterIndex < 2}
+                  />
+                </li>
+              );
+            })}
           </ol>
         </section>
       ))}

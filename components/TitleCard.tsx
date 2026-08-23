@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { WhereToWatch } from "@/components/WhereToWatch";
 import { formatRuntime, FRANCHISE_LABEL } from "@/lib/titles";
 import { tmdbImageUrl } from "@/lib/tmdb";
@@ -12,6 +11,8 @@ type TitleCardProps = {
   /** Badge in the circle — countdown number, story number, or a bullet. */
   displayOrder?: number | string;
   providers?: string[];
+  /** First-screen posters skip lazy-load so the top cards paint immediately. */
+  eager?: boolean;
 };
 
 export function TitleCard({
@@ -21,6 +22,7 @@ export function TitleCard({
   onToggle,
   displayOrder,
   providers,
+  eager = false,
 }: TitleCardProps) {
   const runtime = formatRuntime(title);
   const checkboxId = `watched-${title.id}`;
@@ -39,11 +41,13 @@ export function TitleCard({
     <article className={`title-card ${watched ? "is-watched" : ""}`}>
       <div className="title-card-rail" aria-hidden />
       <div className="title-poster">
-        <Image
+        <img
           src={tmdbImageUrl(title.tmdb.posterPath, "w342")}
           alt={`${title.title} (${title.year}) poster`}
-          fill
-          sizes="(max-width: 640px) 108px, 156px"
+          width={342}
+          height={513}
+          loading={eager ? "eager" : "lazy"}
+          decoding="async"
           className="title-poster-img"
         />
         <span className="title-poster-shade" aria-hidden />

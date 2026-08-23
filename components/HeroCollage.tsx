@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { heroCollagePieces } from "@/lib/hero-collage";
 import { allTitles } from "@/lib/titles";
 import { tmdbImageUrl } from "@/lib/tmdb";
@@ -16,26 +15,23 @@ export function HeroCollage() {
             ? title.tmdb.posterPath
             : title.tmdb.backdropPath;
         const size = piece.image === "poster" ? "w780" : "w1280";
+        const eager =
+          piece.slot === "base" ||
+          piece.slot === "avengers" ||
+          piece.slot === "xmen";
         return (
           <div
             key={piece.slot}
             className={`hero-piece hero-piece-${piece.slot}`}
           >
-            <Image
+            <img
               src={tmdbImageUrl(path, size)}
               alt=""
-              fill
-              sizes={
-                piece.image === "poster"
-                  ? "(max-width: 640px) 28vw, 220px"
-                  : "(max-width: 640px) 90vw, 70vw"
-              }
+              width={piece.image === "poster" ? 780 : 1280}
+              height={piece.image === "poster" ? 1170 : 720}
+              loading={eager ? "eager" : "lazy"}
+              decoding="async"
               className="hero-piece-img"
-              priority={
-                piece.slot === "base" ||
-                piece.slot === "avengers" ||
-                piece.slot === "xmen"
-              }
             />
           </div>
         );
