@@ -503,6 +503,11 @@ body {
   color: var(--text);
 }
 
+.sync-panel code {
+  font-weight: 700;
+  color: var(--text);
+}
+
 .sync-enter {
   display: flex;
   flex-wrap: wrap;
