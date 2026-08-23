@@ -24,6 +24,7 @@ export function HeroCollage() {
             key={piece.slot}
             className={`hero-piece hero-piece-${piece.slot}`}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={tmdbImageUrl(path, size)}
               alt=""

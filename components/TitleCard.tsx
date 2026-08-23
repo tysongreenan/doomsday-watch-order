@@ -41,6 +41,8 @@ export function TitleCard({
     <article className={`title-card ${watched ? "is-watched" : ""}`}>
       <div className="title-card-rail" aria-hidden />
       <div className="title-poster">
+        {/* Plain img: next/image srcSets (~15 widths × every poster) crashed Chromium on hydrate. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={tmdbImageUrl(title.tmdb.posterPath, "w342")}
           alt={`${title.title} (${title.year}) poster`}
