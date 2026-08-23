@@ -41,7 +41,6 @@ export function HeroCollage() {
         );
       })}
       <div className="hero-vignette" />
-      <div className="hero-grain" />
     </div>
   );
 }
