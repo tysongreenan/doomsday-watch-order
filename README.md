@@ -110,11 +110,13 @@ API:
 
 ## Recommended extras (default All list)
 
-- X-Men: First Class (2011)
-- X-Men: Days of Future Past (2014) — most-cited gap in the official 15
-- Deadpool (2016) and Deadpool 2 (2018)
+Cast-driven for the announced Doomsday Fox/MCU mix — not a Phase 4 dump. No Age of Ultron, Guardians, or X-Men: The Last Stand.
+
+- X-Men: First Class (2011) — Magneto/Xavier origin
+- X-Men: Days of Future Past (2014) — critical extra for the original Fox roster
+- Deadpool (2016) and Deadpool 2 (2018) — Wade/Cable before D&W (Gambit is already covered there)
 - Logan (2017) — optional deeper
-- The Marvels (2023) — optional MCU extra
+- The Marvels (2023) — optional MCU extra (Beast post-credits / multiverse)
 
 ## Upcoming
 

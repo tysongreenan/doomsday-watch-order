@@ -368,7 +368,7 @@ export const recommendedTitles: Title[] = [
     runtimeMinutes: 132,
     optionalNote: "Recommended",
     whyItMatters:
-      "Young Xavier and Magneto in the Cold War — the origin story most people mean by a deeper X-Men cut. Not on the official Disney+ 15; we surface it in the default list.",
+      "Young Xavier and Magneto in the Cold War — useful origin for the Fox Magneto/Xavier pairing heading into Doomsday. Not on the official Disney+ 15.",
     tmdb: {
       id: 49538,
       mediaType: "movie",
@@ -387,7 +387,7 @@ export const recommendedTitles: Title[] = [
     runtimeMinutes: 131,
     optionalNote: "Strongly recommended",
     whyItMatters:
-      "The most-cited gap in the Disney+ 15: time travel, legacy X-Men, and the bridge from the original trilogy to First Class.",
+      "The critical extra for the original Fox X-Men (Stewart, McKellen, Marsden, and company): time travel, the legacy roster, and the bridge from X-Men / X2 to First Class.",
     tmdb: {
       id: 127585,
       mediaType: "movie",
@@ -406,7 +406,7 @@ export const recommendedTitles: Title[] = [
     runtimeMinutes: 108,
     optionalNote: "Recommended",
     whyItMatters:
-      "Wade’s origin and fourth-wall chaos before he becomes an MCU problem in Deadpool & Wolverine.",
+      "Wade’s origin before Deadpool & Wolverine (already essential, and the Gambit on-ramp). Recommended, not official homework.",
     tmdb: {
       id: 293660,
       mediaType: "movie",
@@ -425,7 +425,7 @@ export const recommendedTitles: Title[] = [
     runtimeMinutes: 119,
     optionalNote: "Recommended",
     whyItMatters:
-      "Cable, family, and the found-family setup that Deadpool & Wolverine pays off.",
+      "Cable and the found-family setup that Deadpool & Wolverine pays off. Recommended for Wade — Gambit is already covered on the official 15.",
     tmdb: {
       id: 383498,
       mediaType: "movie",
@@ -444,7 +444,7 @@ export const recommendedTitles: Title[] = [
     runtimeMinutes: 105,
     optionalNote: "Optional · MCU extra",
     whyItMatters:
-      "Carol, Kamala, and Monica, plus another look at holes between worlds — optional MCU texture after Multiverse of Madness, not official homework.",
+      "Optional MCU extra: Beast’s post-credits appearance and another look at holes between worlds. Not essential — skip if you only want the official 15 plus Brand New Day.",
     tmdb: {
       id: 609681,
       mediaType: "movie",
