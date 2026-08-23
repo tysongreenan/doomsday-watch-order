@@ -25,78 +25,67 @@ export function TitleCard({
     (title.track !== "essential" ? "Optional" : undefined);
 
   return (
-    <article
-      className={`group relative overflow-hidden rounded-2xl border bg-ash/80 transition-colors ${
-        watched
-          ? "border-ember/35 bg-ember/5"
-          : "border-white/8 hover:border-ember/30"
-      }`}
-    >
-      <div className="flex gap-3 p-4 sm:gap-5 sm:p-5">
-        <div className="flex shrink-0 flex-col items-center gap-3">
-          <div
-            className={`flex h-11 w-11 items-center justify-center rounded-full border font-display text-sm tracking-wide sm:h-12 sm:w-12 ${
-              watched
-                ? "border-ember bg-ember text-black"
-                : "border-white/15 bg-black/40 text-ember-hot"
-            }`}
-          >
-            {orderBadge}
-          </div>
+    <article className={`title-card ${watched ? "is-watched" : ""}`}>
+      <div className="title-card-rail" aria-hidden />
+      <div className="title-poster" aria-hidden>
+        <span className="title-poster-bar" />
+        <span className="title-poster-number">{orderBadge}</span>
+        {watched ? <span className="title-poster-stamp">Watched</span> : null}
+      </div>
+
+      <div className="title-card-body">
+        <div className="flex flex-wrap items-start justify-between gap-2">
+          <label htmlFor={checkboxId} className="cursor-pointer">
+            <h3
+              className={`text-lg font-extrabold leading-tight tracking-wide uppercase sm:text-xl ${
+                watched ? "text-muted line-through decoration-primary" : ""
+              }`}
+            >
+              {title.title}
+            </h3>
+            <p className="mt-1 text-sm text-muted">
+              {title.year}
+              <span className="mx-2 text-border">·</span>
+              {title.type === "series" ? "Series" : "Movie"}
+              {runtime ? (
+                <>
+                  <span className="mx-2 text-border">·</span>
+                  {runtime}
+                </>
+              ) : null}
+            </p>
+          </label>
+          {optionalLabel ? (
+            <span className="optional-chip">{optionalLabel}</span>
+          ) : null}
+        </div>
+
+        <div className="flex flex-wrap gap-1">
+          {title.franchises.map((franchise) => (
+            <span key={franchise} className="franchise-chip">
+              {FRANCHISE_LABEL[franchise]}
+            </span>
+          ))}
+        </div>
+
+        <p className="text-sm leading-relaxed text-muted">{title.whyItMatters}</p>
+
+        <div className="mt-auto flex items-center gap-2 pt-1">
           <input
             id={checkboxId}
             type="checkbox"
             checked={ready ? watched : false}
             disabled={!ready}
             onChange={() => onToggle(title.id)}
-            className="h-5 w-5 cursor-pointer accent-ember disabled:cursor-wait"
+            className="watch-check"
             aria-label={`Mark ${title.title} as watched`}
           />
-        </div>
-
-        <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-start justify-between gap-2">
-            <label htmlFor={checkboxId} className="cursor-pointer">
-              <h3
-                className={`font-display text-lg leading-tight tracking-wide sm:text-xl ${
-                  watched ? "text-muted line-through decoration-ember/50" : ""
-                }`}
-              >
-                {title.title}
-              </h3>
-              <p className="mt-1 text-sm text-muted">
-                {title.year}
-                <span className="mx-2 text-white/20">·</span>
-                {title.type === "series" ? "Series" : "Movie"}
-                {runtime ? (
-                  <>
-                    <span className="mx-2 text-white/20">·</span>
-                    {runtime}
-                  </>
-                ) : null}
-              </p>
-            </label>
-            {optionalLabel ? (
-              <span className="rounded-full border border-white/10 px-2.5 py-1 text-[11px] uppercase tracking-[0.14em] text-muted">
-                {optionalLabel}
-              </span>
-            ) : null}
-          </div>
-
-          <div className="mt-2 flex flex-wrap gap-1.5">
-            {title.franchises.map((franchise) => (
-              <span
-                key={franchise}
-                className="rounded-full border border-ember/25 bg-ember/10 px-2 py-0.5 text-[11px] uppercase tracking-[0.14em] text-ember-hot"
-              >
-                {FRANCHISE_LABEL[franchise]}
-              </span>
-            ))}
-          </div>
-
-          <p className="mt-3 text-sm leading-relaxed text-[#ddd2c6]">
-            {title.whyItMatters}
-          </p>
+          <label
+            htmlFor={checkboxId}
+            className="label-caps cursor-pointer text-muted"
+          >
+            Mark watched
+          </label>
         </div>
       </div>
     </article>

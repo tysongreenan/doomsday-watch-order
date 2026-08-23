@@ -23,23 +23,25 @@ export function OptionalTracks({
   if (xmenTitles.length === 0 && ffTitles.length === 0) return null;
 
   return (
-    <div className="mt-10 space-y-4">
-      <p className="text-[11px] uppercase tracking-[0.22em] text-muted">
+    <div className="mt-16 space-y-4">
+      <p className="label-caps text-muted">
         Optional tracks · not on the official countdown
       </p>
       {xmenTitles.length > 0 ? (
         <details
-          className="rounded-2xl border border-white/8 bg-black/25 open:border-ember/20"
+          className="track-panel"
           {...(expandXmen ? { open: true } : {})}
         >
-          <summary className="cursor-pointer list-none px-4 py-4 font-display text-lg tracking-wide sm:px-5">
+          <summary className="px-4 py-4 sm:px-6">
             <span className="flex items-center justify-between gap-3">
-              Deeper X-Men
-              <span className="text-xs font-sans uppercase tracking-[0.16em] text-muted">
+              <span className="section-title text-lg sm:text-xl">
+                Deeper X-Men
+              </span>
+              <span className="label-caps text-muted">
                 {xmenTitles.length} titles
               </span>
             </span>
-            <p className="mt-1 font-sans text-sm font-normal tracking-normal text-muted">
+            <p className="mt-2 text-sm font-normal tracking-normal text-muted normal-case">
               First Class, Days of Future Past, Logan, and the Deadpool films
               before the MCU handshake.
             </p>
@@ -58,18 +60,15 @@ export function OptionalTracks({
         </details>
       ) : null}
       {ffTitles.length > 0 ? (
-        <details
-          className="rounded-2xl border border-white/8 bg-black/25 open:border-ember/20"
-          {...(expandFf ? { open: true } : {})}
-        >
-          <summary className="cursor-pointer list-none px-4 py-4 font-display text-lg tracking-wide sm:px-5">
+        <details className="track-panel" {...(expandFf ? { open: true } : {})}>
+          <summary className="px-4 py-4 sm:px-6">
             <span className="flex items-center justify-between gap-3">
-              Older Fantastic Four
-              <span className="text-xs font-sans uppercase tracking-[0.16em] text-muted">
-                Optional / non-MCU
+              <span className="section-title text-lg sm:text-xl">
+                Older Fantastic Four
               </span>
+              <span className="label-caps text-muted">Optional / non-MCU</span>
             </span>
-            <p className="mt-1 font-sans text-sm font-normal tracking-normal text-muted">
+            <p className="mt-2 text-sm font-normal tracking-normal text-muted normal-case">
               Pre-MCU Fox and 2015 films. Flavor only — skip them if you are
               only doing official homework.
             </p>
