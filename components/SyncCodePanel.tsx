@@ -63,60 +63,66 @@ export function SyncCodePanel() {
     setEnterValue("");
   }
 
+  const sharingOff = mode === "off";
+
   return (
-    <div className="sync-panel">
-      <p className="label-caps text-primary">Sync across devices</p>
-      {mode === "off" ? (
-        <p className="mt-2 text-sm leading-relaxed text-muted">
-          Progress is saved on this device. Add a{" "}
-          <code>DATABASE_URL</code> (Neon) env var to enable a sync code — see
-          the README.
+    <section className="share-panel">
+      <div className="share-panel-copy">
+        <h2 className="section-title">Save your progress and share with others</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
+          {sharingOff
+            ? "Progress saves on this device."
+            : "Copy your code to keep watching on another phone or laptop. Load a code to pick up someone else’s list."}
         </p>
-      ) : (
-        <>
-          <div className="mt-3 flex flex-wrap items-center gap-2">
-            <p className="text-sm text-muted">
-              Your sync code:{" "}
-              <span className="sync-code">{code || "••••-••••"}</span>
-            </p>
-            <button
-              type="button"
-              className="btn-ghost"
-              onClick={() => void copyCode()}
-              disabled={!code}
-            >
-              {copied ? "Copied" : "Copy"}
-            </button>
+      </div>
+
+      {sharingOff ? null : (
+        <div className="share-actions">
+          <div className="share-action">
+            <p className="label-caps text-primary">Share code</p>
+            <div className="share-row">
+              <span className="sync-code">{code || "DOOM-••••"}</span>
+              <button
+                type="button"
+                className="btn-primary"
+                onClick={() => void copyCode()}
+                disabled={!code}
+              >
+                {copied ? "Copied" : "Copy"}
+              </button>
+            </div>
           </div>
-          <form className="sync-enter" onSubmit={(event) => void onLoadCode(event)}>
-            <label htmlFor="sync-code-input" className="sr-only">
-              Enter a sync code from another device
+          <form
+            className="share-action"
+            onSubmit={(event) => void onLoadCode(event)}
+          >
+            <label htmlFor="sync-code-input" className="label-caps text-primary">
+              Load code
             </label>
-            <input
-              id="sync-code-input"
-              className="sync-input"
-              value={enterValue}
-              onChange={(event) => setEnterValue(event.target.value)}
-              placeholder="Enter code"
-              autoComplete="off"
-              spellCheck={false}
-              disabled={busy}
-            />
-            <button type="submit" className="btn-ghost" disabled={busy}>
-              Load
-            </button>
+            <div className="share-row">
+              <input
+                id="sync-code-input"
+                className="sync-input"
+                value={enterValue}
+                onChange={(event) => setEnterValue(event.target.value)}
+                placeholder="DOOM-XXXX"
+                autoComplete="off"
+                spellCheck={false}
+                disabled={busy}
+              />
+              <button type="submit" className="btn-ghost" disabled={busy}>
+                Load
+              </button>
+            </div>
           </form>
-          <p className="mt-2 text-sm text-muted">
-            This device keeps an offline copy. Enter a code to load another
-            device&apos;s progress.
-          </p>
-        </>
+        </div>
       )}
+
       {enterError ? (
-        <p className="mt-2 text-sm text-primary" role="status">
+        <p className="mt-3 text-sm text-primary" role="status">
           {enterError}
         </p>
       ) : null}
-    </div>
+    </section>
   );
 }

@@ -10,7 +10,7 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   title: "Avengers: Doomsday watch order",
   description:
-    "Public homework tracker for Avengers: Doomsday (December 18, 2026). Timeline order is the default. Official Disney+ 15, plus Brand New Day, recommended deeper cuts, and the upcoming Avengers films. Check off progress and find where to watch in Canada.",
+    "Watch order for Avengers: Doomsday (December 18, 2026). Timeline order is the default. Official Disney+ 15, plus Brand New Day, recommended deeper cuts, and the upcoming Avengers films. Check off progress and find where to watch in Canada.",
   openGraph: {
     title: "Avengers: Doomsday watch order",
     description:

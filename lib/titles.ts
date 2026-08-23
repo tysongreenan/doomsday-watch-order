@@ -19,16 +19,28 @@ export const FRANCHISE_LABEL: Record<Franchise, string> = {
 
 export const FILTERS: { id: FilterId; label: string }[] = [
   { id: "all", label: "All" },
-  { id: "essential", label: "Essential only" },
+  { id: "essential", label: "Must watch" },
   { id: "upcoming", label: "Upcoming" },
   { id: "xmen", label: "X-Men" },
   { id: "mcu", label: "MCU" },
   { id: "fantastic-four", label: "Fantastic Four" },
 ];
 
-export const SORT_MODES: { id: SortMode; label: string }[] = [
-  { id: "story", label: "Timeline order" },
-  { id: "release", label: "Release order" },
+export const SORT_MODES: {
+  id: SortMode;
+  label: string;
+  hint: string;
+}[] = [
+  {
+    id: "story",
+    label: "Timeline order",
+    hint: "In-universe, from the 1940s to Doomsday.",
+  },
+  {
+    id: "release",
+    label: "Release order",
+    hint: "By the year each title came out.",
+  },
 ];
 
 /**
@@ -44,6 +56,24 @@ export const SORT_MODES: { id: SortMode; label: string }[] = [
  * - Brave New World → Thunderbolts* → First Steps → Brand New Day.
  * - Avengers: Doomsday, then Secret Wars.
  * - Older non-MCU FF stay optional flavor, not canon placement.
+ *
+ * Timeline rail years (`timelineYear` / `timelineYearLabel`) are the in-universe
+ * era the left rail uses — not release year. Choices:
+ * - Cap: First Avenger → 1943 (WWII origin)
+ * - First Class → 1962 (Cuban Missile Crisis)
+ * - X-Men / X2 → 2000 / 2003 (Fox present-day era)
+ * - Days of Future Past → 1973 (past mission is the bulk of the film; the 2023
+ *   future war is the frame)
+ * - Deadpool / Deadpool 2 → 2016 / 2018
+ * - Logan → 2029 (Fox far-future sendoff)
+ * - The Avengers → 2012; Infinity War → 2018; Endgame → 2023
+ * - Loki and Deadpool & Wolverine → "Outside time" (TVA / Void)
+ * - Post-Endgame MCU present: Shang-Chi / No Way Home / Multiverse of Madness
+ *   2024; Wakanda Forever 2025; The Marvels / Brave New World / Thunderbolts*
+ *   2026
+ * - First Steps → "1960s" (Earth-828, not the MCU present)
+ * - Brand New Day / Doomsday → 2026; Secret Wars → 2027
+ * - Older non-MCU Fantastic Four → their release years (flavor only)
  */
 export const STORY_ORDER_NOTE =
   "Cap: First Avenger, then First Class before the original X-Men films; Days of Future Past as the mutant bridge; Deadpool films, then Logan. MCU: The Avengers → Infinity War → Endgame → Loki, then Shang-Chi through The Marvels, Deadpool & Wolverine, Brave New World, Thunderbolts*, First Steps, and Brand New Day. Doomsday and Secret Wars close the list. Older non-MCU Fantastic Four stay optional below.";
@@ -55,6 +85,7 @@ export const essentialTitles: Title[] = [
     storyOrder: 3,
     title: "X-Men",
     year: 2000,
+    timelineYear: 2000,
     type: "movie",
     franchises: ["xmen"],
     track: "essential",
@@ -74,6 +105,7 @@ export const essentialTitles: Title[] = [
     storyOrder: 4,
     title: "X2",
     year: 2003,
+    timelineYear: 2003,
     type: "movie",
     franchises: ["xmen"],
     track: "essential",
@@ -93,6 +125,7 @@ export const essentialTitles: Title[] = [
     storyOrder: 1,
     title: "Captain America: The First Avenger",
     year: 2011,
+    timelineYear: 1943,
     type: "movie",
     franchises: ["mcu"],
     track: "essential",
@@ -112,6 +145,7 @@ export const essentialTitles: Title[] = [
     storyOrder: 9,
     title: "The Avengers",
     year: 2012,
+    timelineYear: 2012,
     type: "movie",
     franchises: ["mcu"],
     track: "essential",
@@ -131,6 +165,7 @@ export const essentialTitles: Title[] = [
     storyOrder: 10,
     title: "Avengers: Infinity War",
     year: 2018,
+    timelineYear: 2018,
     type: "movie",
     franchises: ["mcu"],
     track: "essential",
@@ -150,6 +185,7 @@ export const essentialTitles: Title[] = [
     storyOrder: 11,
     title: "Avengers: Endgame",
     year: 2019,
+    timelineYear: 2023,
     type: "movie",
     franchises: ["mcu"],
     track: "essential",
@@ -169,6 +205,7 @@ export const essentialTitles: Title[] = [
     storyOrder: 12,
     title: "Loki",
     year: 2021,
+    timelineYearLabel: "Outside time",
     type: "series",
     franchises: ["mcu"],
     track: "essential",
@@ -188,6 +225,7 @@ export const essentialTitles: Title[] = [
     storyOrder: 13,
     title: "Shang-Chi and the Legend of the Ten Rings",
     year: 2021,
+    timelineYear: 2024,
     type: "movie",
     franchises: ["mcu"],
     track: "essential",
@@ -207,6 +245,7 @@ export const essentialTitles: Title[] = [
     storyOrder: 14,
     title: "Spider-Man: No Way Home",
     year: 2021,
+    timelineYear: 2024,
     type: "movie",
     franchises: ["mcu"],
     track: "essential",
@@ -226,6 +265,7 @@ export const essentialTitles: Title[] = [
     storyOrder: 16,
     title: "Black Panther: Wakanda Forever",
     year: 2022,
+    timelineYear: 2025,
     type: "movie",
     franchises: ["mcu"],
     track: "essential",
@@ -245,6 +285,7 @@ export const essentialTitles: Title[] = [
     storyOrder: 15,
     title: "Doctor Strange in the Multiverse of Madness",
     year: 2022,
+    timelineYear: 2024,
     type: "movie",
     franchises: ["mcu"],
     track: "essential",
@@ -264,6 +305,7 @@ export const essentialTitles: Title[] = [
     storyOrder: 18,
     title: "Deadpool & Wolverine",
     year: 2024,
+    timelineYearLabel: "Outside time",
     type: "movie",
     franchises: ["xmen", "mcu"],
     track: "essential",
@@ -283,6 +325,7 @@ export const essentialTitles: Title[] = [
     storyOrder: 19,
     title: "Captain America: Brave New World",
     year: 2025,
+    timelineYear: 2026,
     type: "movie",
     franchises: ["mcu"],
     track: "essential",
@@ -302,6 +345,7 @@ export const essentialTitles: Title[] = [
     storyOrder: 20,
     title: "Thunderbolts*",
     year: 2025,
+    timelineYear: 2026,
     type: "movie",
     franchises: ["mcu"],
     track: "essential",
@@ -321,6 +365,7 @@ export const essentialTitles: Title[] = [
     storyOrder: 21,
     title: "The Fantastic Four: First Steps",
     year: 2025,
+    timelineYearLabel: "1960s",
     type: "movie",
     franchises: ["mcu", "fantastic-four"],
     track: "essential",
@@ -340,13 +385,14 @@ export const essentialTitles: Title[] = [
     storyOrder: 22,
     title: "Spider-Man: Brand New Day",
     year: 2026,
+    timelineYear: 2026,
     type: "movie",
     franchises: ["mcu"],
     track: "essential",
     runtimeMinutes: 145,
     optionalNote: "In theaters",
     whyItMatters:
-      "Disney+ homework is 15 titles; Brand New Day is the Phase 6 bridge right before Doomsday. Latest Peter Parker / MCU Spider-Man entry heading into December, still carrying the multiverse hangover from No Way Home.",
+      "The Phase 6 bridge right before Doomsday. Latest Peter Parker / MCU Spider-Man entry heading into December, still carrying the multiverse hangover from No Way Home.",
     tmdb: {
       id: 969681,
       mediaType: "movie",
@@ -362,6 +408,7 @@ export const recommendedTitles: Title[] = [
     storyOrder: 2,
     title: "X-Men: First Class",
     year: 2011,
+    timelineYear: 1962,
     type: "movie",
     franchises: ["xmen"],
     track: "recommended",
@@ -381,6 +428,7 @@ export const recommendedTitles: Title[] = [
     storyOrder: 5,
     title: "X-Men: Days of Future Past",
     year: 2014,
+    timelineYear: 1973,
     type: "movie",
     franchises: ["xmen"],
     track: "recommended",
@@ -400,13 +448,14 @@ export const recommendedTitles: Title[] = [
     storyOrder: 6,
     title: "Deadpool",
     year: 2016,
+    timelineYear: 2016,
     type: "movie",
     franchises: ["xmen"],
     track: "recommended",
     runtimeMinutes: 108,
     optionalNote: "Recommended",
     whyItMatters:
-      "Wade’s origin before Deadpool & Wolverine (already essential, and the Gambit on-ramp). Recommended, not official homework.",
+      "Wade’s origin before Deadpool & Wolverine (already essential, and the Gambit on-ramp).",
     tmdb: {
       id: 293660,
       mediaType: "movie",
@@ -419,6 +468,7 @@ export const recommendedTitles: Title[] = [
     storyOrder: 7,
     title: "Deadpool 2",
     year: 2018,
+    timelineYear: 2018,
     type: "movie",
     franchises: ["xmen"],
     track: "recommended",
@@ -438,6 +488,7 @@ export const recommendedTitles: Title[] = [
     storyOrder: 17,
     title: "The Marvels",
     year: 2023,
+    timelineYear: 2026,
     type: "movie",
     franchises: ["mcu"],
     track: "recommended",
@@ -460,6 +511,7 @@ export const xmenDeeperTitles: Title[] = [
     storyOrder: 8,
     title: "Logan",
     year: 2017,
+    timelineYear: 2029,
     type: "movie",
     franchises: ["xmen"],
     track: "xmen-deeper",
@@ -482,6 +534,7 @@ export const upcomingTitles: Title[] = [
     storyOrder: 23,
     title: "Avengers: Doomsday",
     year: 2026,
+    timelineYear: 2026,
     type: "movie",
     franchises: ["mcu"],
     track: "upcoming",
@@ -501,6 +554,7 @@ export const upcomingTitles: Title[] = [
     storyOrder: 24,
     title: "Avengers: Secret Wars",
     year: 2027,
+    timelineYear: 2027,
     type: "movie",
     franchises: ["mcu"],
     track: "upcoming",
@@ -523,6 +577,7 @@ export const fantasticFourLegacyTitles: Title[] = [
     storyOrder: 25,
     title: "Fantastic Four",
     year: 2005,
+    timelineYear: 2005,
     type: "movie",
     franchises: ["fantastic-four"],
     track: "fantastic-four-legacy",
@@ -542,6 +597,7 @@ export const fantasticFourLegacyTitles: Title[] = [
     storyOrder: 26,
     title: "Fantastic Four: Rise of the Silver Surfer",
     year: 2007,
+    timelineYear: 2007,
     type: "movie",
     franchises: ["fantastic-four"],
     track: "fantastic-four-legacy",
@@ -561,6 +617,7 @@ export const fantasticFourLegacyTitles: Title[] = [
     storyOrder: 27,
     title: "Fantastic Four",
     year: 2015,
+    timelineYear: 2015,
     type: "movie",
     franchises: ["fantastic-four"],
     track: "fantastic-four-legacy",
@@ -635,6 +692,13 @@ for (const piece of heroCollagePieces) {
 }
 if (allTitles.some((title) => !title.justWatchUrl)) {
   throw new Error("Each title must have a JustWatch Canada search URL");
+}
+if (
+  allTitles.some(
+    (title) => title.timelineYear == null && !title.timelineYearLabel,
+  )
+) {
+  throw new Error("Each title must have timelineYear or timelineYearLabel");
 }
 
 export function formatRuntime(title: Title): string | null {

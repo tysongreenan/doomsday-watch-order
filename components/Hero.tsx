@@ -1,28 +1,37 @@
-import { DaysUntil } from "@/components/DaysUntil";
-import { HeroCollage } from "@/components/HeroCollage";
-import { DISNEY_PLUS_COUNT, DOOMSDAY_LABEL, ESSENTIAL_COUNT } from "@/lib/titles";
+import { getImageProps } from "next/image";
+import { CountdownClock } from "@/components/CountdownClock";
+import { HERO_POSTER_SRC, HERO_PRIMARY_SRC } from "@/lib/hero";
 
 export function Hero() {
+  const common = {
+    alt: "",
+    fill: true,
+    sizes: "100vw",
+    priority: true,
+  } as const;
+  const {
+    props: { srcSet: posterSrcSet },
+  } = getImageProps({ ...common, src: HERO_POSTER_SRC });
+  const { props: wideProps } = getImageProps({
+    ...common,
+    src: HERO_PRIMARY_SRC,
+  });
+
   return (
     <header className="hero">
       <div className="hero-chrome" aria-hidden />
-      <HeroCollage />
+      <div className="hero-media" aria-hidden>
+        <picture>
+          <source media="(max-width: 639px)" srcSet={posterSrcSet} />
+          <img {...wideProps} alt="" className="hero-photo" />
+        </picture>
+        <div className="hero-overlay" />
+        <div className="hero-grain" />
+      </div>
       <div className="hero-copy">
-        <p className="eyebrow text-primary">
-          Public prep list · {DOOMSDAY_LABEL}
-        </p>
-        <h1 className="hero-title mt-3">
-          Countdown to
-          <span className="block text-primary">Doomsday</span>
-        </h1>
-        <p className="hero-lede">
-          A streaming-style watch order anyone can use before December.
-          Timeline order is the default; switch to Release order anytime. The
-          official Disney+ countdown is {DISNEY_PLUS_COUNT} titles — we treat
-          Spider-Man: Brand New Day as essential #{ESSENTIAL_COUNT}, then add
-          recommended deeper cuts and the upcoming Avengers films.
-        </p>
-        <DaysUntil />
+        <CountdownClock>
+          <p className="hero-lede">Watch what matters before December 18.</p>
+        </CountdownClock>
       </div>
     </header>
   );

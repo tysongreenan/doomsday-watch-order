@@ -1,18 +1,14 @@
 import { SORT_MODES } from "@/lib/titles";
 import type { SortMode } from "@/lib/types";
 
-type SortBarProps = {
+type OrderModeCardsProps = {
   value: SortMode;
   onChange: (sort: SortMode) => void;
 };
 
-export function SortBar({ value, onChange }: SortBarProps) {
+export function OrderModeCards({ value, onChange }: OrderModeCardsProps) {
   return (
-    <div
-      className="grid grid-cols-2 gap-2"
-      role="radiogroup"
-      aria-label="Watch-order sort"
-    >
+    <div className="order-cards" role="radiogroup" aria-label="Watch order">
       {SORT_MODES.map((mode) => {
         const selected = value === mode.id;
         return (
@@ -22,9 +18,10 @@ export function SortBar({ value, onChange }: SortBarProps) {
             role="radio"
             aria-checked={selected}
             onClick={() => onChange(mode.id)}
-            className="chip"
+            className="order-card"
           >
-            {mode.label}
+            <span className="order-card-title">{mode.label}</span>
+            <span className="order-card-hint">{mode.hint}</span>
           </button>
         );
       })}

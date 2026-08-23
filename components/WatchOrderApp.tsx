@@ -3,9 +3,10 @@
 import { useCallback, useMemo, useState, useSyncExternalStore } from "react";
 import { FilterBar } from "@/components/FilterBar";
 import { OptionalTracks } from "@/components/OptionalTracks";
+import { OrderModeCards } from "@/components/OrderModeCards";
 import { ProgressPanel } from "@/components/ProgressPanel";
-import { SortBar } from "@/components/SortBar";
-import { TitleCard } from "@/components/TitleCard";
+import { SyncCodePanel } from "@/components/SyncCodePanel";
+import { TimelineList } from "@/components/TimelineList";
 import {
   getClientReadySnapshot,
   getServerReadySnapshot,
@@ -19,10 +20,8 @@ import {
 import { useWatchProviders } from "@/lib/watch-providers";
 import {
   essentialIds,
-  essentialRuntimeHint,
   fantasticFourLegacyTitles,
   sortByStoryOrder,
-  STORY_ORDER_NOTE,
   titleMatchesFilter,
   titlesForSort,
 } from "@/lib/titles";
@@ -50,9 +49,7 @@ export function WatchOrderApp() {
 
   const reset = useCallback(() => {
     if (watched.size === 0) return;
-    const confirmed = window.confirm(
-      "Clear watched checkboxes on this device and your sync list?",
-    );
+    const confirmed = window.confirm("Clear watched titles on this device?");
     if (confirmed) resetWatched();
   }, [watched.size]);
 
@@ -72,66 +69,44 @@ export function WatchOrderApp() {
   const isStory = sortMode === "story";
 
   return (
-    <div className="relative z-10 mx-auto w-full max-w-5xl px-4 pb-16 sm:px-6">
-      <ProgressPanel
-        watchedCount={watchedCount}
-        total={essentialIds.length}
-        ready={ready}
-        onReset={reset}
-      />
+    <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-16 sm:px-6">
+      <OrderModeCards value={sortMode} onChange={setSortMode} />
+      <SyncCodePanel />
 
-      <div className="mt-6 space-y-3">
-        <SortBar value={sortMode} onChange={setSortMode} />
+      <div className="mt-8 space-y-4">
         <FilterBar value={filter} onChange={setFilter} />
+        <ProgressPanel
+          watchedCount={watchedCount}
+          total={essentialIds.length}
+          ready={ready}
+          onReset={reset}
+        />
       </div>
 
       <section className="mt-8">
         <div className="mb-6">
           <p className="label-caps text-primary">
-            {isStory
-              ? "In-universe chronology · default"
-              : "Release order · official countdown"}
+            {isStory ? "In-universe" : "By release year"}
           </p>
           <h2 className="section-title mt-2">
             {isStory ? "Timeline order" : "Release order"}
           </h2>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
-            {isStory ? (
-              <>
-                Default view: in-universe chronology for Doomsday prep. The
-                official Disney+ countdown is 15 titles; we add Spider-Man:
-                Brand New Day as essential #16, then recommended deeper cuts
-                and the upcoming Avengers films. Essential only still means
-                those 16. {STORY_ORDER_NOTE}
-              </>
-            ) : (
-              <>
-                Same list by theatrical year — official Disney+ 15, Brand New
-                Day as #16, plus recommended extras and upcoming Avengers
-                unless you filter to Essential only. Check titles off as you
-                go — progress syncs with a short code when the backend is
-                configured, and stays on this device either way.{" "}
-                {essentialRuntimeHint}.
-              </>
-            )}
+            {isStory
+              ? "From Captain America in 1943 through Doomsday in 2026. Check titles off as you go."
+              : "The same titles, by the year they came out."}
           </p>
         </div>
 
         {mainTitles.length > 0 ? (
-          <ol className="space-y-4">
-            {mainTitles.map((title) => (
-              <li key={title.id}>
-                <TitleCard
-                  title={title}
-                  displayOrder={isStory ? title.storyOrder : title.order}
-                  watched={watched.has(title.id)}
-                  ready={ready}
-                  onToggle={toggle}
-                  providers={providersById[title.id]}
-                />
-              </li>
-            ))}
-          </ol>
+          <TimelineList
+            titles={mainTitles}
+            sortMode={sortMode}
+            watched={watched}
+            ready={ready}
+            onToggle={toggle}
+            providersById={providersById}
+          />
         ) : (
           <p className="empty-panel px-4 py-6 text-sm text-muted">
             No titles match this filter.
