@@ -1,4 +1,9 @@
-import { getSupabaseAdmin, isSyncConfigured } from "@/lib/supabase-admin";
+import {
+  getWatchListByCode,
+  insertWatchList,
+  isSyncConfigured,
+  upsertWatchList,
+} from "@/lib/db";
 import { clientKey, isRateLimited } from "@/lib/rate-limit";
 import {
   generateSyncCode,
@@ -34,40 +39,30 @@ export async function GET(request: Request) {
     );
   }
 
-  const supabase = getSupabaseAdmin();
-  if (!supabase) {
-    return Response.json({ enabled: false }, { status: 503 });
-  }
+  try {
+    const data = await getWatchListByCode(code);
+    if (!data) {
+      return Response.json(
+        { enabled: true, error: "No list found for that code." },
+        { status: 404 },
+      );
+    }
 
-  const { data, error } = await supabase
-    .from("watch_lists")
-    .select("code, watched, updated_at")
-    .eq("code", code)
-    .maybeSingle();
-
-  if (error) {
+    return jsonWithCodeCookie(
+      {
+        enabled: true,
+        code: data.code,
+        watched: sanitizeWatchedIds(data.watched),
+        updatedAt: data.updated_at,
+      },
+      data.code,
+    );
+  } catch {
     return Response.json(
       { enabled: true, error: "Could not load progress." },
       { status: 500 },
     );
   }
-
-  if (!data) {
-    return Response.json(
-      { enabled: true, error: "No list found for that code." },
-      { status: 404 },
-    );
-  }
-
-  return jsonWithCodeCookie(
-    {
-      enabled: true,
-      code: data.code,
-      watched: sanitizeWatchedIds(data.watched),
-      updatedAt: data.updated_at,
-    },
-    data.code,
-  );
 }
 
 export async function POST(request: Request) {
@@ -75,11 +70,6 @@ export async function POST(request: Request) {
   if (limited) return limited;
 
   if (!isSyncConfigured()) {
-    return Response.json({ enabled: false }, { status: 503 });
-  }
-
-  const supabase = getSupabaseAdmin();
-  if (!supabase) {
     return Response.json({ enabled: false }, { status: 503 });
   }
 
@@ -115,44 +105,8 @@ export async function POST(request: Request) {
   const updatedAt = new Date().toISOString();
 
   if (requested) {
-    const { data, error } = await supabase
-      .from("watch_lists")
-      .upsert(
-        { code: requested, watched, updated_at: updatedAt },
-        { onConflict: "code" },
-      )
-      .select("code, watched, updated_at")
-      .single();
-
-    if (error || !data) {
-      return Response.json(
-        { enabled: true, error: "Could not save progress." },
-        { status: 500 },
-      );
-    }
-
-    return jsonWithCodeCookie(
-      {
-        enabled: true,
-        code: data.code,
-        watched: sanitizeWatchedIds(data.watched),
-        updatedAt: data.updated_at,
-      },
-      data.code,
-    );
-  }
-
-  for (let attempt = 0; attempt < 6; attempt += 1) {
-    const code = generateSyncCode();
-    if (!isValidSyncCode(code)) continue;
-
-    const { data, error } = await supabase
-      .from("watch_lists")
-      .insert({ code, watched, updated_at: updatedAt })
-      .select("code, watched, updated_at")
-      .single();
-
-    if (!error && data) {
+    try {
+      const data = await upsertWatchList(requested, watched, updatedAt);
       return jsonWithCodeCookie(
         {
           enabled: true,
@@ -161,16 +115,44 @@ export async function POST(request: Request) {
           updatedAt: data.updated_at,
         },
         data.code,
-        201,
+      );
+    } catch {
+      return Response.json(
+        { enabled: true, error: "Could not save progress." },
+        { status: 500 },
       );
     }
+  }
 
-    if (error?.code === "23505") continue;
+  for (let attempt = 0; attempt < 6; attempt += 1) {
+    const code = generateSyncCode();
+    if (!isValidSyncCode(code)) continue;
 
-    return Response.json(
-      { enabled: true, error: "Could not create a sync list." },
-      { status: 500 },
-    );
+    try {
+      const result = await insertWatchList(code, watched, updatedAt);
+      if (result.ok) {
+        return jsonWithCodeCookie(
+          {
+            enabled: true,
+            code: result.row.code,
+            watched: sanitizeWatchedIds(result.row.watched),
+            updatedAt: result.row.updated_at,
+          },
+          result.row.code,
+          201,
+        );
+      }
+      if (result.uniqueViolation) continue;
+      return Response.json(
+        { enabled: true, error: "Could not create a sync list." },
+        { status: 500 },
+      );
+    } catch {
+      return Response.json(
+        { enabled: true, error: "Could not create a sync list." },
+        { status: 500 },
+      );
+    }
   }
 
   return Response.json(

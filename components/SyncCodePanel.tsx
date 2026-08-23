@@ -68,8 +68,9 @@ export function SyncCodePanel() {
       <p className="label-caps text-primary">Sync across devices</p>
       {mode === "off" ? (
         <p className="mt-2 text-sm leading-relaxed text-muted">
-          Progress is saved on this device. Add Supabase env vars to enable a
-          sync code — see the README.
+          Progress is saved on this device. Add a{" "}
+          <code>DATABASE_URL</code> (Neon) env var to enable a sync code — see
+          the README.
         </p>
       ) : (
         <>
