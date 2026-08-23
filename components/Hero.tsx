@@ -23,7 +23,7 @@ export function Hero() {
       <div className="hero-media" aria-hidden>
         <picture>
           <source media="(max-width: 639px)" srcSet={posterSrcSet} />
-          <img {...wideProps} className="hero-photo" />
+          <img {...wideProps} alt="" className="hero-photo" />
         </picture>
         <div className="hero-overlay" />
         <div className="hero-grain" />
