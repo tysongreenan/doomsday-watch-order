@@ -1,11 +1,20 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState, useSyncExternalStore } from "react";
 import { FilterBar } from "@/components/FilterBar";
 import { OptionalTracks } from "@/components/OptionalTracks";
 import { ProgressPanel } from "@/components/ProgressPanel";
 import { TitleCard } from "@/components/TitleCard";
-import { loadWatchedIds, saveWatchedIds } from "@/lib/progress";
+import {
+  getClientReadySnapshot,
+  getServerReadySnapshot,
+  getServerWatchedSnapshot,
+  getWatchedSnapshot,
+  resetWatched,
+  subscribeClientReady,
+  subscribeWatched,
+  toggleWatched,
+} from "@/lib/progress";
 import {
   essentialIds,
   essentialRuntimeHint,
@@ -17,27 +26,21 @@ import {
 import type { FilterId } from "@/lib/types";
 
 export function WatchOrderApp() {
-  const [watched, setWatched] = useState<Set<string>>(() => new Set());
-  const [ready, setReady] = useState(false);
   const [filter, setFilter] = useState<FilterId>("all");
-
-  useEffect(() => {
-    setWatched(new Set(loadWatchedIds()));
-    setReady(true);
-  }, []);
-
-  useEffect(() => {
-    if (!ready) return;
-    saveWatchedIds([...watched]);
-  }, [ready, watched]);
+  const ready = useSyncExternalStore(
+    subscribeClientReady,
+    getClientReadySnapshot,
+    getServerReadySnapshot,
+  );
+  const snapshot = useSyncExternalStore(
+    subscribeWatched,
+    getWatchedSnapshot,
+    getServerWatchedSnapshot,
+  );
+  const watched = useMemo(() => new Set(JSON.parse(snapshot) as string[]), [snapshot]);
 
   const toggle = useCallback((id: string) => {
-    setWatched((current) => {
-      const next = new Set(current);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
+    toggleWatched(id);
   }, []);
 
   const reset = useCallback(() => {
@@ -45,7 +48,7 @@ export function WatchOrderApp() {
     const confirmed = window.confirm(
       "Clear watched checkboxes on this device?",
     );
-    if (confirmed) setWatched(new Set());
+    if (confirmed) resetWatched();
   }, [watched.size]);
 
   const watchedCount = useMemo(

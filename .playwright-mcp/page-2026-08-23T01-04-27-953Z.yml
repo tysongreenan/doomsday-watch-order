@@ -1,0 +1,234 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - paragraph [ref=e4]: Public prep list · December 18, 2026
+      - 'heading "Homework before Avengers: Doomsday" [level=1] [ref=e5]':
+        - text: Homework before
+        - generic [ref=e6]: "Avengers: Doomsday"
+      - paragraph [ref=e7]: A cinematic watch order anyone can use before December. Start with the official Disney+ countdown — 15 titles — then optionally dive deeper into X-Men and older Fantastic Four films.
+      - paragraph [ref=e8]: 117 days until Doomsday
+    - main [ref=e10]:
+      - generic [ref=e11]:
+        - generic [ref=e12]:
+          - generic [ref=e13]:
+            - generic [ref=e14]:
+              - paragraph [ref=e15]: Homework progress
+              - paragraph [ref=e16]: 1 of 15 essential
+            - button "Reset progress" [ref=e17]
+          - progressbar "Essential titles watched" [ref=e18]
+        - tablist "Watch-order filters" [ref=e20]:
+          - tab "All" [selected] [ref=e21]
+          - tab "Essential only" [ref=e22]
+          - tab "X-Men" [ref=e23]
+          - tab "MCU" [ref=e24]
+          - tab "Fantastic Four" [ref=e25]
+        - generic [ref=e26]:
+          - generic [ref=e27]:
+            - paragraph [ref=e28]: Official Disney+ countdown
+            - 'heading "Countdown to Avengers: Doomsday" [level=2] [ref=e29]'
+            - paragraph [ref=e30]: Marvel / Disney+'s official 15-title prep list, shown here in release order. Check titles off as you go — progress stays on this device only. ~41 hr including Loki.
+          - list [ref=e31]:
+            - listitem [ref=e32]:
+              - article [ref=e33]:
+                - generic [ref=e34]:
+                  - generic [ref=e35]:
+                    - generic [ref=e36]: "1"
+                    - checkbox "Mark X-Men as watched" [checked] [active] [ref=e37] [cursor=pointer]
+                  - generic [ref=e38]:
+                    - generic [ref=e40] [cursor=pointer]:
+                      - heading "X-Men" [level=3] [ref=e41]
+                      - paragraph [ref=e42]: 2000·Movie·1h 44m
+                    - generic [ref=e43]: X-Men
+                    - paragraph [ref=e45]: Introduces the Fox X-Men roster and the Xavier–Magneto war that Doomsday is expected to collide with.
+            - listitem [ref=e46]:
+              - article [ref=e47]:
+                - generic [ref=e48]:
+                  - generic [ref=e49]:
+                    - generic [ref=e50]: "2"
+                    - checkbox "Mark X2 as watched" [ref=e51] [cursor=pointer]
+                  - generic [ref=e52]:
+                    - generic [ref=e54] [cursor=pointer]:
+                      - heading "X2" [level=3] [ref=e55]
+                      - paragraph [ref=e56]: 2003·Movie·2h 14m
+                    - generic [ref=e57]: X-Men
+                    - paragraph [ref=e59]: Deepens the Brotherhood conflict and cements Wolverine as the mutant most likely to bridge worlds.
+            - listitem [ref=e60]:
+              - article [ref=e61]:
+                - generic [ref=e62]:
+                  - generic [ref=e63]:
+                    - generic [ref=e64]: "3"
+                    - 'checkbox "Mark Captain America: The First Avenger as watched" [ref=e65] [cursor=pointer]'
+                  - generic [ref=e66]:
+                    - generic [ref=e68] [cursor=pointer]:
+                      - 'heading "Captain America: The First Avenger" [level=3] [ref=e69]'
+                      - paragraph [ref=e70]: 2011·Movie·2h 04m
+                    - generic [ref=e71]: MCU
+                    - paragraph [ref=e73]: Steve Rogers’ origin, Hydra, and the Tesseract seed the Avengers myth the later crossovers still run on.
+            - listitem [ref=e74]:
+              - article [ref=e75]:
+                - generic [ref=e76]:
+                  - generic [ref=e77]:
+                    - generic [ref=e78]: "4"
+                    - checkbox "Mark The Avengers as watched" [ref=e79] [cursor=pointer]
+                  - generic [ref=e80]:
+                    - generic [ref=e82] [cursor=pointer]:
+                      - heading "The Avengers" [level=3] [ref=e83]
+                      - paragraph [ref=e84]: 2012·Movie·2h 23m
+                    - generic [ref=e85]: MCU
+                    - paragraph [ref=e87]: The original team-up — the template every later Avengers event, including Doomsday, is measured against.
+            - listitem [ref=e88]:
+              - article [ref=e89]:
+                - generic [ref=e90]:
+                  - generic [ref=e91]:
+                    - generic [ref=e92]: "5"
+                    - 'checkbox "Mark Avengers: Infinity War as watched" [ref=e93] [cursor=pointer]'
+                  - generic [ref=e94]:
+                    - generic [ref=e96] [cursor=pointer]:
+                      - 'heading "Avengers: Infinity War" [level=3] [ref=e97]'
+                      - paragraph [ref=e98]: 2018·Movie·2h 29m
+                    - generic [ref=e99]: MCU
+                    - paragraph [ref=e101]: Thanos and the Infinity Stones rewrite the universe the Multiverse Saga is still answering.
+            - listitem [ref=e102]:
+              - article [ref=e103]:
+                - generic [ref=e104]:
+                  - generic [ref=e105]:
+                    - generic [ref=e106]: "6"
+                    - 'checkbox "Mark Avengers: Endgame as watched" [ref=e107] [cursor=pointer]'
+                  - generic [ref=e108]:
+                    - generic [ref=e110] [cursor=pointer]:
+                      - 'heading "Avengers: Endgame" [level=3] [ref=e111]'
+                      - paragraph [ref=e112]: 2019·Movie·3h 01m
+                    - generic [ref=e113]: MCU
+                    - paragraph [ref=e115]: The Time Heist, the sacrifices, and the new status quo that Phase 4–6 — and Doomsday — inherit.
+            - listitem [ref=e116]:
+              - article [ref=e117]:
+                - generic [ref=e118]:
+                  - generic [ref=e119]:
+                    - generic [ref=e120]: "7"
+                    - checkbox "Mark Loki as watched" [ref=e121] [cursor=pointer]
+                  - generic [ref=e122]:
+                    - generic [ref=e124] [cursor=pointer]:
+                      - heading "Loki" [level=3] [ref=e125]
+                      - paragraph [ref=e126]: 2021·Series·2 seasons · ~10 hr
+                    - generic [ref=e127]: MCU
+                    - paragraph [ref=e129]: The TVA, branching timelines, and the multiverse machinery that lets mutants and the Fantastic Four share a screen.
+            - listitem [ref=e130]:
+              - article [ref=e131]:
+                - generic [ref=e132]:
+                  - generic [ref=e133]:
+                    - generic [ref=e134]: "8"
+                    - checkbox "Mark Shang-Chi and the Legend of the Ten Rings as watched" [ref=e135] [cursor=pointer]
+                  - generic [ref=e136]:
+                    - generic [ref=e138] [cursor=pointer]:
+                      - heading "Shang-Chi and the Legend of the Ten Rings" [level=3] [ref=e139]
+                      - paragraph [ref=e140]: 2021·Movie·2h 12m
+                    - generic [ref=e141]: MCU
+                    - paragraph [ref=e143]: A post-Endgame hero and the Ten Rings sit in the same MCU generation Doomsday is drawing into the fight.
+            - listitem [ref=e144]:
+              - article [ref=e145]:
+                - generic [ref=e146]:
+                  - generic [ref=e147]:
+                    - generic [ref=e148]: "9"
+                    - 'checkbox "Mark Spider-Man: No Way Home as watched" [ref=e149] [cursor=pointer]'
+                  - generic [ref=e150]:
+                    - generic [ref=e152] [cursor=pointer]:
+                      - 'heading "Spider-Man: No Way Home" [level=3] [ref=e153]'
+                      - paragraph [ref=e154]: 2021·Movie·2h 28m
+                    - generic [ref=e155]: MCU
+                    - paragraph [ref=e157]: The spell that cracked the multiverse and pulled variants through — the door Doomsday walks through.
+            - listitem [ref=e158]:
+              - article [ref=e159]:
+                - generic [ref=e160]:
+                  - generic [ref=e161]:
+                    - generic [ref=e162]: "10"
+                    - 'checkbox "Mark Black Panther: Wakanda Forever as watched" [ref=e163] [cursor=pointer]'
+                  - generic [ref=e164]:
+                    - generic [ref=e166] [cursor=pointer]:
+                      - 'heading "Black Panther: Wakanda Forever" [level=3] [ref=e167]'
+                      - paragraph [ref=e168]: 2022·Movie·2h 41m
+                    - generic [ref=e169]: MCU
+                    - paragraph [ref=e171]: A new Black Panther, Namor, and a more fractured political map heading into the next Avengers war.
+            - listitem [ref=e172]:
+              - article [ref=e173]:
+                - generic [ref=e174]:
+                  - generic [ref=e175]:
+                    - generic [ref=e176]: "11"
+                    - checkbox "Mark Doctor Strange in the Multiverse of Madness as watched" [ref=e177] [cursor=pointer]
+                  - generic [ref=e178]:
+                    - generic [ref=e180] [cursor=pointer]:
+                      - heading "Doctor Strange in the Multiverse of Madness" [level=3] [ref=e181]
+                      - paragraph [ref=e182]: 2022·Movie·2h 06m
+                    - generic [ref=e183]: MCU
+                    - paragraph [ref=e185]: Incursions, variant Stranges, and worlds that can collide and die — a preview of multiversal stakes.
+            - listitem [ref=e186]:
+              - article [ref=e187]:
+                - generic [ref=e188]:
+                  - generic [ref=e189]:
+                    - generic [ref=e190]: "12"
+                    - checkbox "Mark Deadpool & Wolverine as watched" [ref=e191] [cursor=pointer]
+                  - generic [ref=e192]:
+                    - generic [ref=e194] [cursor=pointer]:
+                      - heading "Deadpool & Wolverine" [level=3] [ref=e195]
+                      - paragraph [ref=e196]: 2024·Movie·2h 08m
+                    - generic [ref=e197]:
+                      - generic [ref=e198]: X-Men
+                      - generic [ref=e199]: MCU
+                    - paragraph [ref=e200]: Fox characters officially punch into the MCU via the TVA — the on-ramp for X-Men in Doomsday.
+            - listitem [ref=e201]:
+              - article [ref=e202]:
+                - generic [ref=e203]:
+                  - generic [ref=e204]:
+                    - generic [ref=e205]: "13"
+                    - 'checkbox "Mark Captain America: Brave New World as watched" [ref=e206] [cursor=pointer]'
+                  - generic [ref=e207]:
+                    - generic [ref=e209] [cursor=pointer]:
+                      - 'heading "Captain America: Brave New World" [level=3] [ref=e210]'
+                      - paragraph [ref=e211]: 2025·Movie·1h 58m
+                    - generic [ref=e212]: MCU
+                    - paragraph [ref=e214]: Sam Wilson’s Cap, President Ross, and adamantium reset the board in the year before Doomsday.
+            - listitem [ref=e215]:
+              - article [ref=e216]:
+                - generic [ref=e217]:
+                  - generic [ref=e218]:
+                    - generic [ref=e219]: "14"
+                    - checkbox "Mark Thunderbolts* as watched" [ref=e220] [cursor=pointer]
+                  - generic [ref=e221]:
+                    - generic [ref=e223] [cursor=pointer]:
+                      - heading "Thunderbolts*" [level=3] [ref=e224]
+                      - paragraph [ref=e225]: 2025·Movie·2h 06m
+                    - generic [ref=e226]: MCU
+                    - paragraph [ref=e228]: The New Avengers and the Void show who is actually standing when the next world-ending threat arrives.
+            - listitem [ref=e229]:
+              - article [ref=e230]:
+                - generic [ref=e231]:
+                  - generic [ref=e232]:
+                    - generic [ref=e233]: "15"
+                    - 'checkbox "Mark The Fantastic Four: First Steps as watched" [ref=e234] [cursor=pointer]'
+                  - generic [ref=e235]:
+                    - generic [ref=e237] [cursor=pointer]:
+                      - 'heading "The Fantastic Four: First Steps" [level=3] [ref=e238]'
+                      - paragraph [ref=e239]: 2025·Movie·1h 55m
+                    - generic [ref=e240]:
+                      - generic [ref=e241]: MCU
+                      - generic [ref=e242]: Fantastic Four
+                    - paragraph [ref=e243]: Reed’s family, a 1960s-adjacent Earth, and Doom’s shadow — the most direct on-ramp to December.
+        - generic [ref=e244]:
+          - paragraph [ref=e245]: Optional tracks · not on the official countdown
+          - group [ref=e246]:
+            - generic "Deeper X-Men 5 titles First Class, Days of Future Past, Logan, and the Deadpool films before the MCU handshake." [ref=e247] [cursor=pointer]:
+              - generic [ref=e248]:
+                - text: Deeper X-Men
+                - generic [ref=e249]: 5 titles
+              - paragraph [ref=e250]: First Class, Days of Future Past, Logan, and the Deadpool films before the MCU handshake.
+          - group [ref=e251]:
+            - generic "Older Fantastic Four Optional / non-MCU Pre-MCU Fox and 2015 films. Flavor only — skip them if you are only doing official homework." [ref=e252] [cursor=pointer]:
+              - generic [ref=e253]:
+                - text: Older Fantastic Four
+                - generic [ref=e254]: Optional / non-MCU
+              - paragraph [ref=e255]: Pre-MCU Fox and 2015 films. Flavor only — skip them if you are only doing official homework.
+    - contentinfo [ref=e256]:
+      - generic [ref=e257]:
+        - paragraph [ref=e258]: "Fan-made homework tracker. Not affiliated with Marvel, Disney, or 20th Century Studios. Avengers: Doomsday is scheduled for December 18, 2026."
+        - link "GitHub repo" [ref=e259] [cursor=pointer]:
+          - /url: https://github.com/tysongreenan/doomsday-watch-order
+  - alert [ref=e260]
