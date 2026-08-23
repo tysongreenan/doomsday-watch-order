@@ -40,7 +40,7 @@ export function TitleCard({
       <div className="title-card-rail" aria-hidden />
       <div className="title-poster">
         <Image
-          src={tmdbImageUrl(title.tmdb.posterPath, "w780")}
+          src={tmdbImageUrl(title.tmdb.posterPath, "w342")}
           alt={`${title.title} (${title.year}) poster`}
           fill
           sizes="(max-width: 640px) 108px, 156px"

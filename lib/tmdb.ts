@@ -5,7 +5,7 @@ export const TMDB_CREDIT =
 
 export const TMDB_HOME = "https://www.themoviedb.org";
 
-export type TmdbPosterSize = "w500" | "w780";
+export type TmdbPosterSize = "w342" | "w500" | "w780";
 export type TmdbBackdropSize = "w780" | "w1280" | "original";
 
 export function tmdbImageUrl(
