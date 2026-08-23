@@ -483,6 +483,26 @@ export const fantasticFourLegacyTitles: Title[] = [
   },
 ];
 
+function attachWatchLinks(title: Title): Title {
+  const query = `${title.title} ${title.year}`;
+  return {
+    ...title,
+    justWatchUrl:
+      title.justWatchUrl ??
+      `https://www.justwatch.com/ca/search?q=${encodeURIComponent(query)}`,
+    disneyPlusUrl:
+      title.disneyPlusUrl ??
+      (title.track === "essential"
+        ? `https://www.disneyplus.com/search?q=${encodeURIComponent(title.title)}`
+        : undefined),
+  };
+}
+
+for (const title of essentialTitles) Object.assign(title, attachWatchLinks(title));
+for (const title of xmenDeeperTitles) Object.assign(title, attachWatchLinks(title));
+for (const title of fantasticFourLegacyTitles)
+  Object.assign(title, attachWatchLinks(title));
+
 export const allTitles: Title[] = [
   ...essentialTitles,
   ...xmenDeeperTitles,
@@ -501,6 +521,9 @@ for (const piece of heroCollagePieces) {
   if (!titlesById.has(piece.titleId)) {
     throw new Error(`Hero collage references unknown title ${piece.titleId}`);
   }
+}
+if (allTitles.some((title) => !title.justWatchUrl)) {
+  throw new Error("Each title must have a JustWatch Canada search URL");
 }
 
 export function formatRuntime(title: Title): string | null {

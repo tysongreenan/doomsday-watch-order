@@ -34,4 +34,8 @@ export type Title = {
   whyItMatters: string;
   optionalNote?: string;
   tmdb: TitleTmdb;
+  /** Canada JustWatch search URL. Filled from title + year when omitted. */
+  justWatchUrl?: string;
+  /** Disney+ search URL for official countdown titles. */
+  disneyPlusUrl?: string;
 };

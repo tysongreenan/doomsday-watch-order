@@ -9,6 +9,7 @@ type OptionalTracksProps = {
   onToggle: (id: string) => void;
   expandXmen: boolean;
   expandFf: boolean;
+  providersById?: Record<string, string[]>;
 };
 
 export function OptionalTracks({
@@ -19,6 +20,7 @@ export function OptionalTracks({
   onToggle,
   expandXmen,
   expandFf,
+  providersById = {},
 }: OptionalTracksProps) {
   if (xmenTitles.length === 0 && ffTitles.length === 0) return null;
 
@@ -54,6 +56,7 @@ export function OptionalTracks({
                 watched={watched.has(title.id)}
                 ready={ready}
                 onToggle={onToggle}
+                providers={providersById[title.id]}
               />
             ))}
           </div>
@@ -81,6 +84,7 @@ export function OptionalTracks({
                 watched={watched.has(title.id)}
                 ready={ready}
                 onToggle={onToggle}
+                providers={providersById[title.id]}
               />
             ))}
           </div>
