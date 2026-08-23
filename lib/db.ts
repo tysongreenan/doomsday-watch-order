@@ -1,4 +1,4 @@
-import { neon, NeonDbError } from "@neondatabase/serverless";
+import { neon, NeonDbError, type NeonQueryFunction } from "@neondatabase/serverless";
 
 export type WatchListRow = {
   code: string;
@@ -6,7 +6,7 @@ export type WatchListRow = {
   updated_at: string;
 };
 
-type Sql = ReturnType<typeof neon>;
+type Sql = NeonQueryFunction<false, false>;
 
 let cached: Sql | null | undefined;
 
@@ -92,7 +92,7 @@ function getSql(): Sql | null {
     return null;
   }
 
-  cached = neon(url);
+  cached = neon<false, false>(url);
   return cached;
 }
 
