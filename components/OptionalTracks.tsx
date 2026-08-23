@@ -27,7 +27,7 @@ export function OptionalTracks({
   return (
     <div className="mt-16 space-y-4">
       <p className="label-caps text-muted">
-        Optional tracks · not on the official countdown
+        Optional tracks · older Fantastic Four stay off the main list
       </p>
       {xmenTitles.length > 0 ? (
         <details
@@ -44,8 +44,8 @@ export function OptionalTracks({
               </span>
             </span>
             <p className="mt-2 text-sm font-normal tracking-normal text-muted normal-case">
-              First Class, Days of Future Past, Logan, and the Deadpool films
-              before the MCU handshake.
+              Logan stays here if it is not already in the main list — a grim
+              Fox-timeline sendoff, not required plot.
             </p>
           </summary>
           <div className="space-y-3 px-3 pb-4 sm:px-4">

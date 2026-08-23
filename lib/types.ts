@@ -2,9 +2,20 @@ export type TitleType = "movie" | "series";
 
 export type Franchise = "xmen" | "mcu" | "fantastic-four";
 
-export type TitleTrack = "essential" | "xmen-deeper" | "fantastic-four-legacy";
+export type TitleTrack =
+  | "essential"
+  | "recommended"
+  | "xmen-deeper"
+  | "fantastic-four-legacy"
+  | "upcoming";
 
-export type FilterId = "all" | "essential" | "xmen" | "mcu" | "fantastic-four";
+export type FilterId =
+  | "all"
+  | "essential"
+  | "upcoming"
+  | "xmen"
+  | "mcu"
+  | "fantastic-four";
 
 export type SortMode = "release" | "story";
 
@@ -22,7 +33,7 @@ export type TitleTmdb = {
 export type Title = {
   id: string;
   order?: number;
-  /** In-universe / Doomsday-prep chronology. Lower comes first in Story order. */
+  /** In-universe / Doomsday-prep chronology. Lower comes first in Timeline order. */
   storyOrder: number;
   title: string;
   year: number;

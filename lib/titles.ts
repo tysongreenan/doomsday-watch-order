@@ -3,7 +3,12 @@ import type { FilterId, Franchise, SortMode, Title } from "./types";
 
 export const DOOMSDAY_DATE = "2026-12-18";
 export const DOOMSDAY_LABEL = "December 18, 2026";
-export const ESSENTIAL_COUNT = 15;
+export const SECRET_WARS_DATE = "2027-12-17";
+export const SECRET_WARS_LABEL = "December 17, 2027";
+/** Official Disney+ / Marvel Countdown to Avengers: Doomsday. */
+export const DISNEY_PLUS_COUNT = 15;
+/** Official 15 plus Spider-Man: Brand New Day as the Phase 6 bridge. */
+export const ESSENTIAL_COUNT = 16;
 export const GITHUB_REPO = "https://github.com/tysongreenan/doomsday-watch-order";
 
 export const FRANCHISE_LABEL: Record<Franchise, string> = {
@@ -15,32 +20,33 @@ export const FRANCHISE_LABEL: Record<Franchise, string> = {
 export const FILTERS: { id: FilterId; label: string }[] = [
   { id: "all", label: "All" },
   { id: "essential", label: "Essential only" },
+  { id: "upcoming", label: "Upcoming" },
   { id: "xmen", label: "X-Men" },
   { id: "mcu", label: "MCU" },
   { id: "fantastic-four", label: "Fantastic Four" },
 ];
 
 export const SORT_MODES: { id: SortMode; label: string }[] = [
+  { id: "story", label: "Timeline order" },
   { id: "release", label: "Release order" },
-  { id: "story", label: "Story order" },
 ];
 
 /**
- * Story order is in-universe chronology as best as practical for Doomsday prep —
- * not a single official MCU Sacred Timeline and not release order.
+ * Timeline (story) order is in-universe chronology as best as practical for
+ * Doomsday prep — not a single official MCU Sacred Timeline and not release order.
  *
  * - Fox X-Men: First Class (1962) before the original trilogy; Days of Future Past
  *   as the bridge; Deadpool films next; Logan as that timeline’s far-future sendoff.
  * - MCU: Cap: First Avenger (1940s) before The Avengers; Infinity War → Endgame →
- *   Loki (TVA / branching after the Time Heist); then post-Endgame MCU in
- *   in-universe sequence (Shang-Chi, No Way Home, Multiverse of Madness,
- *   Wakanda Forever).
+ *   Loki (TVA / branching after the Time Heist); then post-Endgame MCU
+ *   (Shang-Chi, No Way Home, Multiverse of Madness, Wakanda Forever, The Marvels).
  * - Deadpool & Wolverine after Loki (TVA handshake into the MCU).
- * - Fantastic Four: First Steps last among current MCU entries.
+ * - Brave New World → Thunderbolts* → First Steps → Brand New Day.
+ * - Avengers: Doomsday, then Secret Wars.
  * - Older non-MCU FF stay optional flavor, not canon placement.
  */
 export const STORY_ORDER_NOTE =
-  "First Class before the original X-Men films; Cap: First Avenger before The Avengers; Loki after Endgame; First Steps last as the current MCU Fantastic Four. Older non-MCU Fantastic Four stay optional below.";
+  "Cap: First Avenger, then First Class before the original X-Men films; Days of Future Past as the mutant bridge; Deadpool films, then Logan. MCU: The Avengers → Infinity War → Endgame → Loki, then Shang-Chi through The Marvels, Deadpool & Wolverine, Brave New World, Thunderbolts*, First Steps, and Brand New Day. Doomsday and Secret Wars close the list. Older non-MCU Fantastic Four stay optional below.";
 
 export const essentialTitles: Title[] = [
   {
@@ -255,7 +261,7 @@ export const essentialTitles: Title[] = [
   {
     id: "deadpool-and-wolverine-2024",
     order: 12,
-    storyOrder: 17,
+    storyOrder: 18,
     title: "Deadpool & Wolverine",
     year: 2024,
     type: "movie",
@@ -274,7 +280,7 @@ export const essentialTitles: Title[] = [
   {
     id: "captain-america-brave-new-world-2025",
     order: 13,
-    storyOrder: 18,
+    storyOrder: 19,
     title: "Captain America: Brave New World",
     year: 2025,
     type: "movie",
@@ -293,7 +299,7 @@ export const essentialTitles: Title[] = [
   {
     id: "thunderbolts-2025",
     order: 14,
-    storyOrder: 19,
+    storyOrder: 20,
     title: "Thunderbolts*",
     year: 2025,
     type: "movie",
@@ -312,7 +318,7 @@ export const essentialTitles: Title[] = [
   {
     id: "fantastic-four-first-steps-2025",
     order: 15,
-    storyOrder: 20,
+    storyOrder: 21,
     title: "The Fantastic Four: First Steps",
     year: 2025,
     type: "movie",
@@ -328,9 +334,29 @@ export const essentialTitles: Title[] = [
       backdropPath: "/s94NjfKkcSczZ1FembwmQZwsuwY.jpg",
     },
   },
+  {
+    id: "spider-man-brand-new-day-2026",
+    order: 16,
+    storyOrder: 22,
+    title: "Spider-Man: Brand New Day",
+    year: 2026,
+    type: "movie",
+    franchises: ["mcu"],
+    track: "essential",
+    runtimeMinutes: 145,
+    optionalNote: "In theaters",
+    whyItMatters:
+      "Disney+ homework is 15 titles; Brand New Day is the Phase 6 bridge right before Doomsday. Latest Peter Parker / MCU Spider-Man entry heading into December, still carrying the multiverse hangover from No Way Home.",
+    tmdb: {
+      id: 969681,
+      mediaType: "movie",
+      posterPath: "/iPOn6DinuVyLY17YM9mKuPofV08.jpg",
+      backdropPath: "/7iwUUcKURMT7aKfCwMy6YnGtchD.jpg",
+    },
+  },
 ];
 
-export const xmenDeeperTitles: Title[] = [
+export const recommendedTitles: Title[] = [
   {
     id: "x-men-first-class-2011",
     storyOrder: 2,
@@ -338,10 +364,11 @@ export const xmenDeeperTitles: Title[] = [
     year: 2011,
     type: "movie",
     franchises: ["xmen"],
-    track: "xmen-deeper",
+    track: "recommended",
     runtimeMinutes: 132,
+    optionalNote: "Recommended",
     whyItMatters:
-      "Young Xavier and Magneto in the Cold War — the origin story most people mean by a deeper X-Men cut.",
+      "Young Xavier and Magneto in the Cold War — the origin story most people mean by a deeper X-Men cut. Not on the official Disney+ 15; we surface it in the default list.",
     tmdb: {
       id: 49538,
       mediaType: "movie",
@@ -356,33 +383,16 @@ export const xmenDeeperTitles: Title[] = [
     year: 2014,
     type: "movie",
     franchises: ["xmen"],
-    track: "xmen-deeper",
+    track: "recommended",
     runtimeMinutes: 131,
+    optionalNote: "Strongly recommended",
     whyItMatters:
-      "The timeline-rewrite that ties the original trilogy to First Class — useful mutant-history homework, not on the official 15.",
+      "The most-cited gap in the Disney+ 15: time travel, legacy X-Men, and the bridge from the original trilogy to First Class.",
     tmdb: {
       id: 127585,
       mediaType: "movie",
       posterPath: "/tYfijzolzgoMOtegh1Y7j2Enorg.jpg",
       backdropPath: "/3czpqXzFy5UcNuD1AubecRLWkwD.jpg",
-    },
-  },
-  {
-    id: "logan-2017",
-    storyOrder: 8,
-    title: "Logan",
-    year: 2017,
-    type: "movie",
-    franchises: ["xmen"],
-    track: "xmen-deeper",
-    runtimeMinutes: 137,
-    whyItMatters:
-      "A grim, standalone sendoff that shows how far these characters can go; tone sample, not required plot.",
-    tmdb: {
-      id: 263115,
-      mediaType: "movie",
-      posterPath: "/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg",
-      backdropPath: "/qTdCfGyDisY9e8BLycszlyTsPWx.jpg",
     },
   },
   {
@@ -392,8 +402,9 @@ export const xmenDeeperTitles: Title[] = [
     year: 2016,
     type: "movie",
     franchises: ["xmen"],
-    track: "xmen-deeper",
+    track: "recommended",
     runtimeMinutes: 108,
+    optionalNote: "Recommended",
     whyItMatters:
       "Wade’s origin and fourth-wall chaos before he becomes an MCU problem in Deadpool & Wolverine.",
     tmdb: {
@@ -410,8 +421,9 @@ export const xmenDeeperTitles: Title[] = [
     year: 2018,
     type: "movie",
     franchises: ["xmen"],
-    track: "xmen-deeper",
+    track: "recommended",
     runtimeMinutes: 119,
+    optionalNote: "Recommended",
     whyItMatters:
       "Cable, family, and the found-family setup that Deadpool & Wolverine pays off.",
     tmdb: {
@@ -421,12 +433,94 @@ export const xmenDeeperTitles: Title[] = [
       backdropPath: "/3P52oz9HPQWxcwHOwxtyrVV1LKi.jpg",
     },
   },
+  {
+    id: "the-marvels-2023",
+    storyOrder: 17,
+    title: "The Marvels",
+    year: 2023,
+    type: "movie",
+    franchises: ["mcu"],
+    track: "recommended",
+    runtimeMinutes: 105,
+    optionalNote: "Optional · MCU extra",
+    whyItMatters:
+      "Carol, Kamala, and Monica, plus another look at holes between worlds — optional MCU texture after Multiverse of Madness, not official homework.",
+    tmdb: {
+      id: 609681,
+      mediaType: "movie",
+      posterPath: "/9GBhzXMFjgcZ3FdR9w3bUMMTps5.jpg",
+      backdropPath: "/feSiISwgEpVzR1v3zv2n2AU4ANJ.jpg",
+    },
+  },
+];
+
+export const xmenDeeperTitles: Title[] = [
+  {
+    id: "logan-2017",
+    storyOrder: 8,
+    title: "Logan",
+    year: 2017,
+    type: "movie",
+    franchises: ["xmen"],
+    track: "xmen-deeper",
+    runtimeMinutes: 137,
+    optionalNote: "Optional deeper",
+    whyItMatters:
+      "A grim, standalone sendoff that shows how far these characters can go; tone sample, not required plot. Far-future of the Fox thread, placed after Deadpool 2.",
+    tmdb: {
+      id: 263115,
+      mediaType: "movie",
+      posterPath: "/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg",
+      backdropPath: "/qTdCfGyDisY9e8BLycszlyTsPWx.jpg",
+    },
+  },
+];
+
+export const upcomingTitles: Title[] = [
+  {
+    id: "avengers-doomsday-2026",
+    storyOrder: 23,
+    title: "Avengers: Doomsday",
+    year: 2026,
+    type: "movie",
+    franchises: ["mcu"],
+    track: "upcoming",
+    runtimeLabel: "Coming soon",
+    optionalNote: "In theaters Dec 18, 2026",
+    whyItMatters:
+      "The target film this list is for — Fox X-Men, the Fantastic Four, and the MCU on a collision course.",
+    tmdb: {
+      id: 1003596,
+      mediaType: "movie",
+      posterPath: "/jzPwsojjFStf5lR5Nm07w2hH56G.jpg",
+      backdropPath: "/s4v0UX1anfXm0UvloLsTTJ4v222.jpg",
+    },
+  },
+  {
+    id: "avengers-secret-wars-2027",
+    storyOrder: 24,
+    title: "Avengers: Secret Wars",
+    year: 2027,
+    type: "movie",
+    franchises: ["mcu"],
+    track: "upcoming",
+    runtimeLabel: "Coming soon",
+    optionalNote: "In theaters Dec 17, 2027",
+    whyItMatters:
+      "The Multiverse Saga finale. Watch after Doomsday; dated December 17, 2027.",
+    tmdb: {
+      id: 1003598,
+      mediaType: "movie",
+      posterPath: "/f0YBuh4hyiAheXhh4JnJWoKi9g5.jpg",
+      backdropPath: "/rytc6Lf4447C0CDncwFa4gxe0vY.jpg",
+    },
+  },
 ];
 
 export const fantasticFourLegacyTitles: Title[] = [
   {
     id: "fantastic-four-2005",
-    storyOrder: 21,
+    storyOrder: 25,
     title: "Fantastic Four",
     year: 2005,
     type: "movie",
@@ -445,7 +539,7 @@ export const fantasticFourLegacyTitles: Title[] = [
   },
   {
     id: "fantastic-four-rise-of-the-silver-surfer-2007",
-    storyOrder: 22,
+    storyOrder: 26,
     title: "Fantastic Four: Rise of the Silver Surfer",
     year: 2007,
     type: "movie",
@@ -464,7 +558,7 @@ export const fantasticFourLegacyTitles: Title[] = [
   },
   {
     id: "fantastic-four-2015",
-    storyOrder: 23,
+    storyOrder: 27,
     title: "Fantastic Four",
     year: 2015,
     type: "movie",
@@ -485,6 +579,11 @@ export const fantasticFourLegacyTitles: Title[] = [
 
 function attachWatchLinks(title: Title): Title {
   const query = `${title.title} ${title.year}`;
+  const officialDisneyPlus =
+    title.track === "essential" &&
+    title.order != null &&
+    title.order >= 1 &&
+    title.order <= 15;
   return {
     ...title,
     justWatchUrl:
@@ -492,21 +591,33 @@ function attachWatchLinks(title: Title): Title {
       `https://www.justwatch.com/ca/search?q=${encodeURIComponent(query)}`,
     disneyPlusUrl:
       title.disneyPlusUrl ??
-      (title.track === "essential"
+      (officialDisneyPlus
         ? `https://www.disneyplus.com/search?q=${encodeURIComponent(title.title)}`
         : undefined),
   };
 }
 
 for (const title of essentialTitles) Object.assign(title, attachWatchLinks(title));
+for (const title of recommendedTitles) Object.assign(title, attachWatchLinks(title));
 for (const title of xmenDeeperTitles) Object.assign(title, attachWatchLinks(title));
+for (const title of upcomingTitles) Object.assign(title, attachWatchLinks(title));
 for (const title of fantasticFourLegacyTitles)
   Object.assign(title, attachWatchLinks(title));
 
 export const allTitles: Title[] = [
   ...essentialTitles,
+  ...recommendedTitles,
   ...xmenDeeperTitles,
+  ...upcomingTitles,
   ...fantasticFourLegacyTitles,
+];
+
+/** Main All-list pool: essentials + recommended extras + Logan + upcoming. */
+export const mainListTitles: Title[] = [
+  ...essentialTitles,
+  ...recommendedTitles,
+  ...xmenDeeperTitles,
+  ...upcomingTitles,
 ];
 
 export const essentialIds = essentialTitles.map((title) => title.id);
@@ -538,6 +649,7 @@ export function formatRuntime(title: Title): string | null {
 export function titleMatchesFilter(title: Title, filter: FilterId): boolean {
   if (filter === "all") return true;
   if (filter === "essential") return title.track === "essential";
+  if (filter === "upcoming") return title.track === "upcoming";
   if (filter === "xmen") return title.franchises.includes("xmen");
   if (filter === "mcu") return title.franchises.includes("mcu");
   return title.franchises.includes("fantastic-four");
@@ -550,12 +662,16 @@ export function sortByStoryOrder(titles: Title[]): Title[] {
 }
 
 export function titlesForSort(filter: FilterId, sortMode: SortMode): Title[] {
-  const includeDeeperXmen = sortMode === "story" && filter !== "essential";
-  const pool = includeDeeperXmen
-    ? [...essentialTitles, ...xmenDeeperTitles]
-    : essentialTitles;
+  const pool = filter === "essential" ? essentialTitles : mainListTitles;
   const visible = pool.filter((title) => titleMatchesFilter(title, filter));
-  return sortMode === "story" ? sortByStoryOrder(visible) : visible;
+  if (sortMode === "story") return sortByStoryOrder(visible);
+  return [...visible].sort((a, b) => {
+    if (a.year !== b.year) return a.year - b.year;
+    const orderA = a.order ?? Number.POSITIVE_INFINITY;
+    const orderB = b.order ?? Number.POSITIVE_INFINITY;
+    if (orderA !== orderB) return orderA - orderB;
+    return a.title.localeCompare(b.title);
+  });
 }
 
 const movieMinutes = essentialTitles.reduce(

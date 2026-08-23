@@ -25,13 +25,12 @@ import {
   STORY_ORDER_NOTE,
   titleMatchesFilter,
   titlesForSort,
-  xmenDeeperTitles,
 } from "@/lib/titles";
-import type { FilterId, SortMode } from "@/lib/types";
+import type { FilterId, SortMode, Title } from "@/lib/types";
 
 export function WatchOrderApp() {
   const [filter, setFilter] = useState<FilterId>("all");
-  const [sortMode, setSortMode] = useState<SortMode>("release");
+  const [sortMode, setSortMode] = useState<SortMode>("story");
   const ready = useSyncExternalStore(
     subscribeClientReady,
     getClientReadySnapshot,
@@ -63,16 +62,13 @@ export function WatchOrderApp() {
   );
 
   const mainTitles = titlesForSort(filter, sortMode);
-  const visibleXmen =
-    sortMode === "story"
-      ? []
-      : xmenDeeperTitles.filter((title) => titleMatchesFilter(title, filter));
+  const visibleXmen: Title[] = [];
   const visibleFf = (
     sortMode === "story"
       ? sortByStoryOrder(fantasticFourLegacyTitles)
       : fantasticFourLegacyTitles
   ).filter((title) => titleMatchesFilter(title, filter));
-  const showOptional = filter !== "essential";
+  const showOptional = filter !== "essential" && filter !== "upcoming";
   const isStory = sortMode === "story";
 
   return (
@@ -92,24 +88,30 @@ export function WatchOrderApp() {
       <section className="mt-8">
         <div className="mb-6">
           <p className="label-caps text-primary">
-            {isStory ? "In-universe chronology" : "Official Disney+ countdown"}
+            {isStory
+              ? "In-universe chronology · default"
+              : "Release order · official countdown"}
           </p>
           <h2 className="section-title mt-2">
-            {isStory ? "Story order" : "Countdown to Avengers: Doomsday"}
+            {isStory ? "Timeline order" : "Release order"}
           </h2>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
             {isStory ? (
               <>
-                Same titles as the official 15, plus deeper X-Men cuts woven
-                into in-universe order for Doomsday prep. Checkboxes stay
-                tied to each title. {STORY_ORDER_NOTE}
+                Default view: in-universe chronology for Doomsday prep. The
+                official Disney+ countdown is 15 titles; we add Spider-Man:
+                Brand New Day as essential #16, then recommended deeper cuts
+                and the upcoming Avengers films. Essential only still means
+                those 16. {STORY_ORDER_NOTE}
               </>
             ) : (
               <>
-                Marvel / Disney+&apos;s official 15-title prep list, shown here
-                in release order. Check titles off as you go — progress syncs
-                with a short code when the backend is configured, and stays on
-                this device either way. {essentialRuntimeHint}.
+                Same list by theatrical year — official Disney+ 15, Brand New
+                Day as #16, plus recommended extras and upcoming Avengers
+                unless you filter to Essential only. Check titles off as you
+                go — progress syncs with a short code when the backend is
+                configured, and stays on this device either way.{" "}
+                {essentialRuntimeHint}.
               </>
             )}
           </p>
@@ -132,7 +134,7 @@ export function WatchOrderApp() {
           </ol>
         ) : (
           <p className="empty-panel px-4 py-6 text-sm text-muted">
-            No official countdown titles match this filter.
+            No titles match this filter.
           </p>
         )}
       </section>
