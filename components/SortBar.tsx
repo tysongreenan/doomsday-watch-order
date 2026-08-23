@@ -22,11 +22,7 @@ export function SortBar({ value, onChange }: SortBarProps) {
             role="radio"
             aria-checked={selected}
             onClick={() => onChange(mode.id)}
-            className={`rounded-full border px-3 py-2 text-sm transition-colors ${
-              selected
-                ? "border-ember bg-ember text-black"
-                : "border-white/12 bg-black/30 text-foreground hover:border-ember/40"
-            }`}
+            className="chip"
           >
             {mode.label}
           </button>

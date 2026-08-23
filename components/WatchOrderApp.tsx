@@ -74,7 +74,7 @@ export function WatchOrderApp() {
   const isStory = sortMode === "story";
 
   return (
-    <div className="relative z-10 mx-auto w-full max-w-3xl px-4 pb-16">
+    <div className="relative z-10 mx-auto w-full max-w-5xl px-4 pb-16 sm:px-6">
       <ProgressPanel
         watchedCount={watchedCount}
         total={essentialIds.length}
@@ -88,14 +88,14 @@ export function WatchOrderApp() {
       </div>
 
       <section className="mt-8">
-        <div className="mb-4">
-          <p className="text-[11px] uppercase tracking-[0.22em] text-ember-hot">
+        <div className="mb-6">
+          <p className="label-caps text-primary">
             {isStory ? "In-universe chronology" : "Official Disney+ countdown"}
           </p>
-          <h2 className="mt-1 font-display text-2xl tracking-wide sm:text-3xl">
+          <h2 className="section-title mt-2">
             {isStory ? "Story order" : "Countdown to Avengers: Doomsday"}
           </h2>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
             {isStory ? (
               <>
                 Same titles as the official 15, plus deeper X-Men cuts woven
@@ -113,7 +113,7 @@ export function WatchOrderApp() {
         </div>
 
         {mainTitles.length > 0 ? (
-          <ol className="space-y-3">
+          <ol className="space-y-4">
             {mainTitles.map((title) => (
               <li key={title.id}>
                 <TitleCard
@@ -127,7 +127,7 @@ export function WatchOrderApp() {
             ))}
           </ol>
         ) : (
-          <p className="rounded-2xl border border-white/8 px-4 py-6 text-sm text-muted">
+          <p className="empty-panel px-4 py-6 text-sm text-muted">
             No official countdown titles match this filter.
           </p>
         )}
