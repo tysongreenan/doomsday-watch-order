@@ -1,4 +1,4 @@
-import type { FilterId, Franchise, Title } from "./types";
+import type { FilterId, Franchise, SortMode, Title } from "./types";
 
 export const DOOMSDAY_DATE = "2026-12-18";
 export const DOOMSDAY_LABEL = "December 18, 2026";
@@ -19,10 +19,33 @@ export const FILTERS: { id: FilterId; label: string }[] = [
   { id: "fantastic-four", label: "Fantastic Four" },
 ];
 
+export const SORT_MODES: { id: SortMode; label: string }[] = [
+  { id: "release", label: "Release order" },
+  { id: "story", label: "Story order" },
+];
+
+/**
+ * Story order is in-universe chronology as best as practical for Doomsday prep —
+ * not a single official MCU Sacred Timeline and not release order.
+ *
+ * - Fox X-Men: First Class (1962) before the original trilogy; Days of Future Past
+ *   as the bridge; Deadpool films next; Logan as that timeline’s far-future sendoff.
+ * - MCU: Cap: First Avenger (1940s) before The Avengers; Infinity War → Endgame →
+ *   Loki (TVA / branching after the Time Heist); then post-Endgame MCU in
+ *   in-universe sequence (Shang-Chi, No Way Home, Multiverse of Madness,
+ *   Wakanda Forever).
+ * - Deadpool & Wolverine after Loki (TVA handshake into the MCU).
+ * - Fantastic Four: First Steps last among current MCU entries.
+ * - Older non-MCU FF stay optional flavor, not canon placement.
+ */
+export const STORY_ORDER_NOTE =
+  "First Class before the original X-Men films; Cap: First Avenger before The Avengers; Loki after Endgame; First Steps last as the current MCU Fantastic Four. Older non-MCU Fantastic Four stay optional below.";
+
 export const essentialTitles: Title[] = [
   {
     id: "x-men-2000",
     order: 1,
+    storyOrder: 3,
     title: "X-Men",
     year: 2000,
     type: "movie",
@@ -35,6 +58,7 @@ export const essentialTitles: Title[] = [
   {
     id: "x2-2003",
     order: 2,
+    storyOrder: 4,
     title: "X2",
     year: 2003,
     type: "movie",
@@ -47,6 +71,7 @@ export const essentialTitles: Title[] = [
   {
     id: "captain-america-the-first-avenger-2011",
     order: 3,
+    storyOrder: 1,
     title: "Captain America: The First Avenger",
     year: 2011,
     type: "movie",
@@ -59,6 +84,7 @@ export const essentialTitles: Title[] = [
   {
     id: "the-avengers-2012",
     order: 4,
+    storyOrder: 9,
     title: "The Avengers",
     year: 2012,
     type: "movie",
@@ -71,6 +97,7 @@ export const essentialTitles: Title[] = [
   {
     id: "avengers-infinity-war-2018",
     order: 5,
+    storyOrder: 10,
     title: "Avengers: Infinity War",
     year: 2018,
     type: "movie",
@@ -83,6 +110,7 @@ export const essentialTitles: Title[] = [
   {
     id: "avengers-endgame-2019",
     order: 6,
+    storyOrder: 11,
     title: "Avengers: Endgame",
     year: 2019,
     type: "movie",
@@ -95,6 +123,7 @@ export const essentialTitles: Title[] = [
   {
     id: "loki-2021",
     order: 7,
+    storyOrder: 12,
     title: "Loki",
     year: 2021,
     type: "series",
@@ -107,6 +136,7 @@ export const essentialTitles: Title[] = [
   {
     id: "shang-chi-2021",
     order: 8,
+    storyOrder: 13,
     title: "Shang-Chi and the Legend of the Ten Rings",
     year: 2021,
     type: "movie",
@@ -119,6 +149,7 @@ export const essentialTitles: Title[] = [
   {
     id: "spider-man-no-way-home-2021",
     order: 9,
+    storyOrder: 14,
     title: "Spider-Man: No Way Home",
     year: 2021,
     type: "movie",
@@ -131,6 +162,7 @@ export const essentialTitles: Title[] = [
   {
     id: "black-panther-wakanda-forever-2022",
     order: 10,
+    storyOrder: 16,
     title: "Black Panther: Wakanda Forever",
     year: 2022,
     type: "movie",
@@ -143,6 +175,7 @@ export const essentialTitles: Title[] = [
   {
     id: "doctor-strange-multiverse-of-madness-2022",
     order: 11,
+    storyOrder: 15,
     title: "Doctor Strange in the Multiverse of Madness",
     year: 2022,
     type: "movie",
@@ -155,6 +188,7 @@ export const essentialTitles: Title[] = [
   {
     id: "deadpool-and-wolverine-2024",
     order: 12,
+    storyOrder: 17,
     title: "Deadpool & Wolverine",
     year: 2024,
     type: "movie",
@@ -167,6 +201,7 @@ export const essentialTitles: Title[] = [
   {
     id: "captain-america-brave-new-world-2025",
     order: 13,
+    storyOrder: 18,
     title: "Captain America: Brave New World",
     year: 2025,
     type: "movie",
@@ -179,6 +214,7 @@ export const essentialTitles: Title[] = [
   {
     id: "thunderbolts-2025",
     order: 14,
+    storyOrder: 19,
     title: "Thunderbolts*",
     year: 2025,
     type: "movie",
@@ -191,6 +227,7 @@ export const essentialTitles: Title[] = [
   {
     id: "fantastic-four-first-steps-2025",
     order: 15,
+    storyOrder: 20,
     title: "The Fantastic Four: First Steps",
     year: 2025,
     type: "movie",
@@ -205,6 +242,7 @@ export const essentialTitles: Title[] = [
 export const xmenDeeperTitles: Title[] = [
   {
     id: "x-men-first-class-2011",
+    storyOrder: 2,
     title: "X-Men: First Class",
     year: 2011,
     type: "movie",
@@ -216,6 +254,7 @@ export const xmenDeeperTitles: Title[] = [
   },
   {
     id: "x-men-days-of-future-past-2014",
+    storyOrder: 5,
     title: "X-Men: Days of Future Past",
     year: 2014,
     type: "movie",
@@ -227,6 +266,7 @@ export const xmenDeeperTitles: Title[] = [
   },
   {
     id: "logan-2017",
+    storyOrder: 8,
     title: "Logan",
     year: 2017,
     type: "movie",
@@ -238,6 +278,7 @@ export const xmenDeeperTitles: Title[] = [
   },
   {
     id: "deadpool-2016",
+    storyOrder: 6,
     title: "Deadpool",
     year: 2016,
     type: "movie",
@@ -249,6 +290,7 @@ export const xmenDeeperTitles: Title[] = [
   },
   {
     id: "deadpool-2-2018",
+    storyOrder: 7,
     title: "Deadpool 2",
     year: 2018,
     type: "movie",
@@ -263,6 +305,7 @@ export const xmenDeeperTitles: Title[] = [
 export const fantasticFourLegacyTitles: Title[] = [
   {
     id: "fantastic-four-2005",
+    storyOrder: 21,
     title: "Fantastic Four",
     year: 2005,
     type: "movie",
@@ -275,6 +318,7 @@ export const fantasticFourLegacyTitles: Title[] = [
   },
   {
     id: "fantastic-four-rise-of-the-silver-surfer-2007",
+    storyOrder: 22,
     title: "Fantastic Four: Rise of the Silver Surfer",
     year: 2007,
     type: "movie",
@@ -287,6 +331,7 @@ export const fantasticFourLegacyTitles: Title[] = [
   },
   {
     id: "fantastic-four-2015",
+    storyOrder: 23,
     title: "Fantastic Four",
     year: 2015,
     type: "movie",
@@ -307,6 +352,11 @@ export const allTitles: Title[] = [
 
 export const essentialIds = essentialTitles.map((title) => title.id);
 
+const storyOrders = allTitles.map((title) => title.storyOrder);
+if (new Set(storyOrders).size !== storyOrders.length) {
+  throw new Error("Each title must have a unique storyOrder");
+}
+
 export function formatRuntime(title: Title): string | null {
   if (title.runtimeLabel) return title.runtimeLabel;
   if (title.runtimeMinutes == null) return null;
@@ -322,6 +372,21 @@ export function titleMatchesFilter(title: Title, filter: FilterId): boolean {
   if (filter === "xmen") return title.franchises.includes("xmen");
   if (filter === "mcu") return title.franchises.includes("mcu");
   return title.franchises.includes("fantastic-four");
+}
+
+export function sortByStoryOrder(titles: Title[]): Title[] {
+  return [...titles].sort(
+    (a, b) => a.storyOrder - b.storyOrder || a.year - b.year,
+  );
+}
+
+export function titlesForSort(filter: FilterId, sortMode: SortMode): Title[] {
+  const includeDeeperXmen = sortMode === "story" && filter !== "essential";
+  const pool = includeDeeperXmen
+    ? [...essentialTitles, ...xmenDeeperTitles]
+    : essentialTitles;
+  const visible = pool.filter((title) => titleMatchesFilter(title, filter));
+  return sortMode === "story" ? sortByStoryOrder(visible) : visible;
 }
 
 const movieMinutes = essentialTitles.reduce(
