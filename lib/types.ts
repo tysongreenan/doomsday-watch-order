@@ -6,9 +6,13 @@ export type TitleTrack = "essential" | "xmen-deeper" | "fantastic-four-legacy";
 
 export type FilterId = "all" | "essential" | "xmen" | "mcu" | "fantastic-four";
 
+export type SortMode = "release" | "story";
+
 export type Title = {
   id: string;
   order?: number;
+  /** In-universe / Doomsday-prep chronology. Lower comes first in Story order. */
+  storyOrder: number;
   title: string;
   year: number;
   type: TitleType;

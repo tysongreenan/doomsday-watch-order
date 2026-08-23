@@ -4,6 +4,7 @@ import { useCallback, useMemo, useState, useSyncExternalStore } from "react";
 import { FilterBar } from "@/components/FilterBar";
 import { OptionalTracks } from "@/components/OptionalTracks";
 import { ProgressPanel } from "@/components/ProgressPanel";
+import { SortBar } from "@/components/SortBar";
 import { TitleCard } from "@/components/TitleCard";
 import {
   getClientReadySnapshot,
@@ -18,15 +19,18 @@ import {
 import {
   essentialIds,
   essentialRuntimeHint,
-  essentialTitles,
   fantasticFourLegacyTitles,
+  sortByStoryOrder,
+  STORY_ORDER_NOTE,
   titleMatchesFilter,
+  titlesForSort,
   xmenDeeperTitles,
 } from "@/lib/titles";
-import type { FilterId } from "@/lib/types";
+import type { FilterId, SortMode } from "@/lib/types";
 
 export function WatchOrderApp() {
   const [filter, setFilter] = useState<FilterId>("all");
+  const [sortMode, setSortMode] = useState<SortMode>("release");
   const ready = useSyncExternalStore(
     subscribeClientReady,
     getClientReadySnapshot,
@@ -56,16 +60,18 @@ export function WatchOrderApp() {
     [watched],
   );
 
-  const visibleEssentials = essentialTitles.filter((title) =>
-    titleMatchesFilter(title, filter),
-  );
-  const visibleXmen = xmenDeeperTitles.filter((title) =>
-    titleMatchesFilter(title, filter),
-  );
-  const visibleFf = fantasticFourLegacyTitles.filter((title) =>
-    titleMatchesFilter(title, filter),
-  );
+  const mainTitles = titlesForSort(filter, sortMode);
+  const visibleXmen =
+    sortMode === "story"
+      ? []
+      : xmenDeeperTitles.filter((title) => titleMatchesFilter(title, filter));
+  const visibleFf = (
+    sortMode === "story"
+      ? sortByStoryOrder(fantasticFourLegacyTitles)
+      : fantasticFourLegacyTitles
+  ).filter((title) => titleMatchesFilter(title, filter));
   const showOptional = filter !== "essential";
+  const isStory = sortMode === "story";
 
   return (
     <div className="relative z-10 mx-auto w-full max-w-3xl px-4 pb-16">
@@ -76,31 +82,43 @@ export function WatchOrderApp() {
         onReset={reset}
       />
 
-      <div className="mt-6">
+      <div className="mt-6 space-y-3">
+        <SortBar value={sortMode} onChange={setSortMode} />
         <FilterBar value={filter} onChange={setFilter} />
       </div>
 
       <section className="mt-8">
         <div className="mb-4">
           <p className="text-[11px] uppercase tracking-[0.22em] text-ember-hot">
-            Official Disney+ countdown
+            {isStory ? "In-universe chronology" : "Official Disney+ countdown"}
           </p>
           <h2 className="mt-1 font-display text-2xl tracking-wide sm:text-3xl">
-            Countdown to Avengers: Doomsday
+            {isStory ? "Story order" : "Countdown to Avengers: Doomsday"}
           </h2>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
-            Marvel / Disney+&apos;s official 15-title prep list, shown here in
-            release order. Check titles off as you go — progress stays on this
-            device only. {essentialRuntimeHint}.
+            {isStory ? (
+              <>
+                Same titles as the official 15, plus deeper X-Men cuts woven
+                into in-universe order for Doomsday prep. Checkboxes stay
+                tied to each title. {STORY_ORDER_NOTE}
+              </>
+            ) : (
+              <>
+                Marvel / Disney+&apos;s official 15-title prep list, shown here
+                in release order. Check titles off as you go — progress stays
+                on this device only. {essentialRuntimeHint}.
+              </>
+            )}
           </p>
         </div>
 
-        {visibleEssentials.length > 0 ? (
+        {mainTitles.length > 0 ? (
           <ol className="space-y-3">
-            {visibleEssentials.map((title) => (
+            {mainTitles.map((title) => (
               <li key={title.id}>
                 <TitleCard
                   title={title}
+                  displayOrder={isStory ? title.storyOrder : title.order}
                   watched={watched.has(title.id)}
                   ready={ready}
                   onToggle={toggle}

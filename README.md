@@ -2,7 +2,7 @@
 
 Public homework site for **Avengers: Doomsday** (December 18, 2026).
 
-The primary list is the Disney+ / Marvel official **Countdown to Avengers: Doomsday** — 15 titles in release order. Optional deeper X-Men and older Fantastic Four tracks sit below that list and stay collapsed by default.
+The primary list is the Disney+ / Marvel official **Countdown to Avengers: Doomsday** — 15 titles in **Release order**. Switch to **Story order** for the same titles (plus deeper X-Men cuts) in in-universe chronology. Optional older Fantastic Four films stay on a collapsed track.
 
 Progress (watched / unwatched) is stored in the visitor’s browser with `localStorage`. There is no account, database, or API key.
 
@@ -56,3 +56,7 @@ npm start
 13. Captain America: Brave New World (2025)
 14. Thunderbolts* (2025)
 15. The Fantastic Four: First Steps (2025)
+
+## Story order (in-universe, practical)
+
+Not a single official MCU timeline. First Class before the original X-Men films; Cap: First Avenger before The Avengers; Loki after Endgame; First Steps last as the current MCU Fantastic Four. Older non-MCU Fantastic Four stay optional.

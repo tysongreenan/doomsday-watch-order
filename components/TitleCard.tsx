@@ -6,11 +6,23 @@ type TitleCardProps = {
   watched: boolean;
   ready: boolean;
   onToggle: (id: string) => void;
+  /** Badge in the circle — countdown number, story number, or a bullet. */
+  displayOrder?: number | string;
 };
 
-export function TitleCard({ title, watched, ready, onToggle }: TitleCardProps) {
+export function TitleCard({
+  title,
+  watched,
+  ready,
+  onToggle,
+  displayOrder,
+}: TitleCardProps) {
   const runtime = formatRuntime(title);
   const checkboxId = `watched-${title.id}`;
+  const orderBadge = displayOrder ?? title.order ?? "•";
+  const optionalLabel =
+    title.optionalNote ??
+    (title.track !== "essential" ? "Optional" : undefined);
 
   return (
     <article
@@ -29,7 +41,7 @@ export function TitleCard({ title, watched, ready, onToggle }: TitleCardProps) {
                 : "border-white/15 bg-black/40 text-ember-hot"
             }`}
           >
-            {title.order ?? "•"}
+            {orderBadge}
           </div>
           <input
             id={checkboxId}
@@ -64,9 +76,9 @@ export function TitleCard({ title, watched, ready, onToggle }: TitleCardProps) {
                 ) : null}
               </p>
             </label>
-            {title.optionalNote ? (
+            {optionalLabel ? (
               <span className="rounded-full border border-white/10 px-2.5 py-1 text-[11px] uppercase tracking-[0.14em] text-muted">
-                {title.optionalNote}
+                {optionalLabel}
               </span>
             ) : null}
           </div>
